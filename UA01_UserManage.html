@@ -1,0 +1,108 @@
+<!--/*
+ //******************************************************
+ // システム名 電子入札コアシステム
+ // サブシステム名 アップロードシステム
+ //
+ // 利用者情報管理（UA01_UserManage.html）
+ // @author  NEC
+ // @version 1.0, xxxx.xx.xx, 新規作成
+ //
+ //******************************************************
+*/-->
+<!DOCTYPE html>
+<html lang="ja"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  layout:decorate="~{layout/UC01_OrdLayout}">
+<head>
+<title>利用者情報管理</title>
+
+<script type="text/javascript" th:inline="javascript">
+function entryUser() {
+  document.getForm.action = /*[[ @{'/users/entry'} ]]*/ error.html;
+  document.getForm.submit();
+}
+
+function represUser() {
+  document.getForm.action = /*[[ @{'/users/'} ]]*/ error.html;
+  document.getForm.submit();
+}
+</script>
+
+</head>
+<body>
+  <div class="container" layout:fragment="contents">
+    <div class="screen-title">
+      <div class="row">
+        <div class="col-12">
+          <h2>利用者情報管理</h2>
+        </div>
+      </div>
+    </div><!-- screen-title -->
+
+    <div class="user-form">
+      <form  name="getForm" th:action="@{'/users/'}" method="get" th:object="${userForm}" id="user_form">
+        <div class="top-area">
+          <div class="row">
+            <div class="col-lg-6">
+              <table class="table">
+                <tr>
+                  <th>対象部局</th><td sec:authentication="principal.departmentName"></td>
+                </tr>
+                <tr>
+                  <th>対象事務所 </th>
+                  <td class="td_bodyList">
+                    <div th:if="${#authentication.principal.postType.equals('0')}">
+                      <select id ="targetOfficeNo" name="targetOfficeNo" size="1" >
+                        <option th:each="officeForm : ${listOfficeForm}" th:value="${officeForm.officeNo}"
+                                th:selected="${officeForm.officeNo} == ${userForm.targetOfficeNo}"  >[[${officeForm.officeName}]]</option>
+                      </select>
+                    </div>
+                    <div th:if="${#authentication.principal.postType.equals('1')}">
+                      <span class="td_bodyList"
+                        sec:authentication="principal.officeName"></span>
+                      <input type="hidden" name="officeNo" value="${#authentication.principal.officeNo}" onFocus="" th:field="*{officeNo}" >
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div><!-- top-area -->
+
+        <div class="bottom-area">
+          <div class="row justify-content-between list-controll">
+            <div class="col-6 align-left">
+              <input type="button" id="user_newentry_button" class="btn align-center" onClick="entryUser()" value="新規登録" />
+            </div>
+            <div class="col-6 align-right">
+              <input type="button" id="user_repres_button" class="btn align-right" onClick="represUser()" value="再表示" />
+            </div>
+          </div><!-- list-controll -->
+
+          <div class="row result-list">
+            <div class="col-12">
+              <table>
+                <tr>
+                  <th class="td_header1" align="center" width="5%">No.</th>
+                  <th class="td_header1" align="center" width="15%">ユーザID</th>
+                  <th class="td_header1" align="center" width="42%">事務所名称</th>
+                  <th class="td_header1" align="center" width="38%">担当者名</th>
+                </tr>
+                <tr th:each="userForm,stat :${listUserForm}">
+                  <td class="td_bodyList" align="center" th:text="${stat.count}"></td>
+                  <td class="td_bodyList"><a
+                    th:href="@{'/users/' + ${userForm.userId} + '/edit'}" th:text="${userForm.userId}"></a></td>
+                  <td class="td_bodyList" th:text="${userForm.officeName}"></td>
+                  <td class="td_bodyList" th:text="${userForm.ordererName}"></td>
+                </tr>
+              </table>
+            </div>
+          </div><!-- result-list -->
+        </div><!-- bottom-area -->
+      </form>
+    </div><!-- user-form -->
+  </div><!-- container -->
+</body>
+</html>
