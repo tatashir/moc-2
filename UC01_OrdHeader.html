@@ -10,40 +10,70 @@
  //******************************************************
 */-->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<body>
-  <header class="header" layout:fragment="header">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="logo vertical-center">
-            <h1>技術資料等アップロードシステム</h1>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <body>
+    <header class="header" layout:fragment="header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="logo vertical-center">
+              <h1>技術資料等アップロードシステム</h1>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="tools vertical-right">
-            <th:block sec:authorize="isAuthenticated()">
-              <!--/* ログイン済みの場合 */-->
-              <!--/* 「トップメニュー表示」は、ssoLoginFlagが、falseのときに表示 */-->
-              <a sec:authorize="!principal.ssoLoginFlag" th:href="@{'/topMenu'}">トップメニュー表示</a>
-              <!--/* 「ログアウト」は、ssoLoginFlagが、falseのときに表示 */-->
-              <form sec:authorize="!principal.ssoLoginFlag" th:action="@{'/logout'}" method="post" style="display: inline;">
-                <input type="submit" name="" value="ログアウト" id="logout_button" class="btn" />
-              </form>
-              <!--/* 「閉じる」は、ssoLoginFlagが、trueのときに表示 */-->
-              <input sec:authorize="principal.ssoLoginFlag" class="btn" type="button" name="" value="閉じる" onClick="window.close();"/>
-            </th:block>
-            <th:block sec:authorize="!isAuthenticated()">
-              <!--/* 未ログインの場合 */-->
-              <input class="btn" type="button" name="" value="閉じる" onClick="window.close();"/>
-            </th:block>
+          <div class="col-md-6">
+            <div class="tools vertical-right">
+              <th:block sec:authorize="isAuthenticated()">
+                <!--/* ログイン済みの場合 */-->
+                <!--/* 「トップメニュー表示」は、ssoLoginFlagが、falseのときに表示 */-->
+                <a
+                  sec:authorize="!principal.ssoLoginFlag"
+                  th:href="@{'/topMenu'}"
+                  >トップメニュー表示</a
+                >
+                <!--/* 「ログアウト」は、ssoLoginFlagが、falseのときに表示 */-->
+                <form
+                  sec:authorize="!principal.ssoLoginFlag"
+                  th:action="@{'/logout'}"
+                  method="post"
+                  style="display: inline"
+                >
+                  <input
+                    type="submit"
+                    name=""
+                    value="ログアウト"
+                    id="logout_button"
+                    class="btn"
+                  />
+                </form>
+                <!--/* 「閉じる」は、ssoLoginFlagが、trueのときに表示 */-->
+                <input
+                  sec:authorize="principal.ssoLoginFlag"
+                  class="btn"
+                  type="button"
+                  name=""
+                  value="閉じる"
+                  onClick="window.close();"
+                />
+              </th:block>
+              <th:block sec:authorize="!isAuthenticated()">
+                <!--/* 未ログインの場合 */-->
+                <input
+                  class="btn"
+                  type="button"
+                  name=""
+                  value="閉じる"
+                  onClick="window.close();"
+                />
+              </th:block>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </header>
-</body>
+    </header>
+  </body>
 </html>

@@ -10,62 +10,77 @@
  //******************************************************
 */-->
 <!DOCTYPE html>
-<html lang="ja"
+<html
+  lang="ja"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layout/UC01_OrdLayout}">
-<head>
-<title>ログイン</title>
-</head>
-<body>
-  <div class="container" layout:fragment="contents">
-    <div class="screen-title">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>ログイン</h2>
-          <p>ユーザIDとパスワードを入力後、ログインボタンを押下してください。</p>
+  layout:decorate="~{layout/UC01_OrdLayout}"
+>
+  <head>
+    <title>ログイン</title>
+  </head>
+  <body>
+    <div class="container" layout:fragment="contents">
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>ログイン</h2>
+            <p>
+              ユーザIDとパスワードを入力後、ログインボタンを押下してください。
+            </p>
+          </div>
         </div>
       </div>
-    </div><!-- screen-title -->
+      <!-- screen-title -->
 
-    <div class="bottom-area">
-      <form id="login_form" method="post" th:action="@{'/login'}">
-        <div class="row justify-content-center">
-          <div class="col-lg-5 login-form">
-            <table class="form-table">
-              <tr>
-                <th>ユーザID</th>
-                <td><input type="text" name="user_id" maxlength="120"/></td>
-              </tr>
-              <tr>
-                <th>パスワード</th>
-                <td><input type="password" name="password" maxlength="120"/></td>
-              </tr>
-            </table>
+      <div class="bottom-area">
+        <form id="login_form" method="post" th:action="@{'/login'}">
+          <div class="row justify-content-center">
+            <div class="col-lg-5 login-form">
+              <table class="form-table">
+                <tr>
+                  <th>ユーザID</th>
+                  <td><input type="text" name="user_id" maxlength="120" /></td>
+                </tr>
+                <tr>
+                  <th>パスワード</th>
+                  <td>
+                    <input type="password" name="password" maxlength="120" />
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
-        </div>
-        <div th:if="${param.error}" class="row error">
-          <div class="col-12">
+          <div th:if="${param.error}" class="row error">
+            <div class="col-12">
+              <ul>
+                <li>ユーザＩＤまたはパスワードが誤っています。</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <input
+                type="submit"
+                id="loginButton"
+                class="btn"
+                value="ログイン"
+              />
+            </div>
+          </div>
+        </form>
+
+        <div class="row justify-content-center information">
+          <div class="col-lg-6 align-left">
+            <hr />
+            <p class="bold">お知らせ</p>
+            <textarea
+              readonly="readonly"
+              th:text="${information.content}"
+            ></textarea>
+            <p class="bold">【資料】</p>
             <ul>
-              <li>ユーザＩＤまたはパスワードが誤っています。</li>
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <input type="submit" id="loginButton" class="btn" value="ログイン" />
-          </div>
-        </div>
-      </form>
-
-      <div class="row justify-content-center information">
-        <div class="col-lg-6 align-left">
-          <hr/>
-          <p class="bold">お知らせ</p>
-          <textarea readonly="readonly" th:text="${information.content}"></textarea>
-          <p class="bold">【資料】</p>
-          <ul>
-          <!--/*
+              <!--/*
           本番と検証にてURLに差異がある。検証用リリース時、本番リリース時に気を付けること
 
           本番
@@ -74,12 +89,24 @@
           検証
           　発注者WEBサーバお知らせページ：https://ebswww.midmlit.local
           */-->
-            <li><a href="https://ebwww.midmlit.local/pdf/sousa/kouji/upload/upsousa_h.pdf" target="_blank">技術資料等アップロードシステム_操作マニュアル（発注者側）</a></li>
-            <li><a href="https://ebwww.midmlit.local/pdf/sousa/kouji/upload/upsousa_j.pdf" target="_blank">技術資料等アップロードシステム_操作マニュアル（受注者側）</a></li>
-          </ul>
+              <li>
+                <a
+                  href="https://ebwww.midmlit.local/pdf/sousa/kouji/upload/upsousa_h.pdf"
+                  target="_blank"
+                  >技術資料等アップロードシステム_操作マニュアル（発注者側）</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://ebwww.midmlit.local/pdf/sousa/kouji/upload/upsousa_j.pdf"
+                  target="_blank"
+                  >技術資料等アップロードシステム_操作マニュアル（受注者側）</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>

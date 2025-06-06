@@ -10,125 +10,193 @@
  //******************************************************
 */-->
 <!DOCTYPE html>
-<html lang="ja"
+<html
+  lang="ja"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layout/UC01_OrdLayout}">
-<head>
-  <title>調達案件一覧</title>
-</head>
-<body>
+  layout:decorate="~{layout/UC01_OrdLayout}"
+>
+  <head>
+    <title>調達案件一覧</title>
+  </head>
+  <body>
+    <div class="container" layout:fragment="contents">
+      <div class="breadcrumbs">
+        <div class="row">
+          <div class="col-12">
+            <ul>
+              <li>
+                <a th:href="@{'/projects/condition'}">調達案件検索の表示</a>
+              </li>
+              <li>調達案件一覧</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- breadcrumbs -->
 
-  <div class="container" layout:fragment="contents">
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12">
+            <h2>調達案件一覧</h2>
+          </div>
+        </div>
+      </div>
+      <!-- screen-title -->
 
-    <div class="breadcrumbs">
-      <div class="row">
-        <div class="col-12">
+      <div class="top-area">
+        <div class="row">
+          <div class="col-lg-6">
+            <table class="table">
+              <tr>
+                <th>調達機関</th>
+                <td th:text="${#authentication.principal.organName}"></td>
+              </tr>
+              <tr>
+                <th>部局</th>
+                <td th:text="${#authentication.principal.departmentName}"></td>
+              </tr>
+              <tr>
+                <th>事務所</th>
+                <td th:text="${condition.officeName}"></td>
+              </tr>
+              <tr>
+                <th>工事／コンサル区分</th>
+                <td th:if="${#authentication.principal.projectType == '0'}">
+                  工事
+                </td>
+                <td th:if="${#authentication.principal.projectType == '1'}">
+                  コンサル
+                </td>
+                <td th:if="${#authentication.principal.projectType == '2'}">
+                  工事／コンサル
+                </td>
+              </tr>
+              <tr>
+                <th>入札方式</th>
+                <td th:text="${condition.bidMethodName}"></td>
+              </tr>
+              <tr>
+                <th>調達案件番号</th>
+                <td th:text="${condition.projectNo}"></td>
+              </tr>
+              <tr>
+                <th>調達案件名称</th>
+                <td th:text="${condition.projectName}"></td>
+              </tr>
+              <tr>
+                <th>公告日／公示日</th>
+                <td>
+                  <div
+                    th:text="${condition.publishingStartTime == ''} ? '' : ${condition.publishingStartTime} +  ' から'"
+                  ></div>
+                  <div
+                    th:text="${condition.publishingEndTime == ''} ? '' : ${condition.publishingEndTime} + ' まで'"
+                  ></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- top-area -->
+
+      <div class="bottom-area">
+        <div class="row list-controll">
+          <div class="col-12 align-right">
+            <div class="btn-group">
+              <input
+                class="btn"
+                type="button"
+                value="前ページ"
+                th:disabled="${page.first}"
+                th:onClick="${not page.first} ? 'location.href=\'' + @{'/projects'(page=${page.number -1})} + '\'' : ''"
+              />
+              <input
+                class="btn"
+                type="button"
+                value="再表示"
+                th:onClick="'location.href=\'' + @{'/projects'(page=${page.number})} + '\''"
+              />
+              <input
+                class="btn"
+                type="button"
+                value="次ページ"
+                th:disabled="${page.last}"
+                th:onClick="${not page.last} ? 'location.href=\'' + @{'/projects'(page=${page.number +1})} + '\'' : ''"
+              />
+            </div>
+            <div class="controll-message">
+              <p
+                th:if="${page.totalElements == 0}"
+                th:text="${page.totalElements} + '件です。'"
+              ></p>
+              <p
+                th:if="${page.totalElements > 0}"
+                th:text="'全' + ${page.totalElements} + '件中、' + (${page.number} * ${page.size} + 1)  + '-' + (${page.last} ? ${page.totalElements} :(${page.number + 1}) * ${page.size}) +  '件を表示しています。'"
+              ></p>
+              <p
+                th:text="最終更新日時： + ${#dates.format(new java.util.Date(),'yyyy/MM/dd HH:mm:ss')}"
+              ></p>
+            </div>
+          </div>
+        </div>
+        <!-- bottom-area -->
+
+        <div th:if="${message != null}" class="error" id="msg">
           <ul>
-            <li>
-              <a th:href="@{'/projects/condition'}">調達案件検索の表示</a>
-            </li>
-            <li>調達案件一覧</li>
+            <li
+              th:if="${message.message != null}"
+              th:utext="${message.message}"
+            ></li>
           </ul>
         </div>
-      </div>
-    </div><!-- breadcrumbs -->
 
-    <div class="screen-title">
-      <div class="row">
-        <div class="col-12">
-          <h2>調達案件一覧</h2>
-        </div>
-      </div>
-    </div><!-- screen-title -->
-
-    <div class="top-area">
-      <div class="row">
-        <div class="col-lg-6">
-          <table class="table">
-            <tr><th>調達機関</th><td th:text="${#authentication.principal.organName}"></td></tr>
-            <tr><th>部局</th><td th:text="${#authentication.principal.departmentName}"></td></tr>
-            <tr><th>事務所</th><td th:text="${condition.officeName}"></td></tr>
-            <tr>
-              <th>工事／コンサル区分</th>
-              <td th:if="${#authentication.principal.projectType == '0'}">工事</td>
-              <td th:if="${#authentication.principal.projectType == '1'}">コンサル</td>
-              <td th:if="${#authentication.principal.projectType == '2'}">工事／コンサル</td>
-            </tr>
-            <tr><th>入札方式</th><td th:text="${condition.bidMethodName}"></td></tr>
-            <tr><th>調達案件番号</th><td th:text="${condition.projectNo}"></td></tr>
-            <tr><th>調達案件名称</th><td th:text="${condition.projectName}"></td></tr>
-            <tr>
-              <th>公告日／公示日</th>
-              <td>
-                <div th:text="${condition.publishingStartTime == ''} ? '' : ${condition.publishingStartTime} +  ' から'"></div>
-                <div th:text="${condition.publishingEndTime == ''} ? '' : ${condition.publishingEndTime} + ' まで'" ></div>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div><!-- top-area -->
-
-    <div class="bottom-area">
-      <div class="row list-controll">
-        <div class="col-12 align-right">
-          <div class="btn-group">
-            <input class="btn" type="button" value="前ページ"  th:disabled="${page.first}"
-              th:onClick="${not page.first} ? 'location.href=\'' + @{'/projects'(page=${page.number -1})} + '\'' : ''" />
-            <input class="btn" type="button" value="再表示"
-              th:onClick="'location.href=\'' + @{'/projects'(page=${page.number})} + '\''" />
-            <input class="btn" type="button" value="次ページ" th:disabled="${page.last}"
-              th:onClick="${not page.last} ? 'location.href=\'' + @{'/projects'(page=${page.number +1})} + '\'' : ''" />
-          </div>
-          <div class="controll-message">
-            <p th:if="${page.totalElements == 0}" th:text="${page.totalElements} + '件です。'" ></p>
-            <p th:if="${page.totalElements > 0}"
-              th:text="'全' + ${page.totalElements} + '件中、' + (${page.number} * ${page.size} + 1)  + '-' + (${page.last} ? ${page.totalElements} :(${page.number + 1}) * ${page.size}) +  '件を表示しています。'" >
-            </p>
-            <p th:text="最終更新日時： + ${#dates.format(new java.util.Date(),'yyyy/MM/dd HH:mm:ss')}"></p>
+        <div class="row result-list">
+          <div class="col-12">
+            <table>
+              <tr>
+                <th width="5%">No.</th>
+                <th width="10%">業者数</th>
+                <th width="20%">調達案件番号</th>
+                <th width="23%">調達案件名称</th>
+                <th width="12%">事務所</th>
+                <th width="18%">入札方式</th>
+                <th width="12%">工事種別</th>
+              </tr>
+              <tr
+                th:each="projectDetailForm : ${page.getContent()}"
+                th:object="${projectDetailForm}"
+              >
+                <td
+                  th:text="${projectDetailFormStat.count} + ${page.number} * ${page.size}"
+                ></td>
+                <td>
+                  <a
+                    th:href="@{'/accepters'(projectNo=*{projectNo})}"
+                    th:text="*{accepterCount > 0} ? *{accepterCount} + '業者参加' : ''"
+                  ></a>
+                </td>
+                <td class="align-left" th:text="*{projectNo}"></td>
+                <td class="align-left">
+                  <a
+                    href="#"
+                    th:onClick="openProjectDetailWin([[@{'/projects/'} + *{projectNo}]])"
+                    th:text="*{projectName}"
+                  ></a>
+                </td>
+                <td class="align-left" th:text="*{officeName}"></td>
+                <td class="align-left" th:text="*{bidMethodName}"></td>
+                <td class="align-left" th:text="*{constructionName}"></td>
+              </tr>
+            </table>
           </div>
         </div>
-      </div><!-- bottom-area -->
-
-      <div th:if="${message != null}" class="error" id ="msg">
-        <ul>
-          <li th:if="${message.message != null}" th:utext="${message.message}"></li>
-        </ul>
+        <!-- result-list -->
       </div>
-
-      <div class="row result-list">
-        <div class="col-12">
-          <table>
-            <tr>
-              <th width="5%">No.</th>
-              <th width="10%">業者数</th>
-              <th width="20%">調達案件番号</th>
-              <th width="23%">調達案件名称</th>
-              <th width="12%">事務所</th>
-              <th width="18%">入札方式</th>
-              <th width="12%">工事種別</th>
-            </tr>
-            <tr th:each="projectDetailForm : ${page.getContent()}" th:object="${projectDetailForm}" >
-              <td th:text="${projectDetailFormStat.count} + ${page.number} * ${page.size}"></td>
-              <td>
-                <a th:href="@{'/accepters'(projectNo=*{projectNo})}"
-                  th:text="*{accepterCount > 0} ? *{accepterCount} + '業者参加' : ''"></a>
-              </td>
-              <td class="align-left" th:text="*{projectNo}"></td>
-              <td class="align-left">
-                <a href="#" th:onClick="openProjectDetailWin([[@{'/projects/'} + *{projectNo}]])"
-                  th:text="*{projectName}"></a>
-              </td>
-              <td class="align-left" th:text="*{officeName}"></td>
-              <td class="align-left" th:text="*{bidMethodName}"></td>
-              <td class="align-left" th:text="*{constructionName}"></td>
-            </tr>
-          </table>
-        </div>
-      </div><!-- result-list -->
-    </div><!-- bottom-area -->
-  </div><!-- container -->
-</body>
+      <!-- bottom-area -->
+    </div>
+    <!-- container -->
+  </body>
 </html>

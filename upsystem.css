@@ -9,7 +9,8 @@
 
 /********** global settings *********/
 body {
-  font-family: "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", Helvetica, Arial, sans-serif;
+  font-family: "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", Helvetica,
+    Arial, sans-serif;
   background-color: #f0f0ff;
 }
 
@@ -132,7 +133,7 @@ p.indentback {
 
 .result-list input[type="file"] {
   width: 100%;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 .result-list .controll {
@@ -162,12 +163,12 @@ table.form-table td {
 }
 
 table.form-table input[type="text"] {
-  box-sizing:border-box;
+  box-sizing: border-box;
   width: 80%;
 }
 
 table.form-table input[type="password"] {
-  box-sizing:border-box;
+  box-sizing: border-box;
   width: 80%;
 }
 
@@ -211,9 +212,9 @@ table.form-table td.example {
 .information textarea {
   width: 100%;
   height: 13rem;
-/* 2021.06.01 運用監理_コアシステム新ブラウザ対応 add start */
-  resize:none;
-/* 2021.06.01 運用監理_コアシステム新ブラウザ対応 add end */
+  /* 2021.06.01 運用監理_コアシステム新ブラウザ対応 add start */
+  resize: none;
+  /* 2021.06.01 運用監理_コアシステム新ブラウザ対応 add end */
   margin-bottom: 1.2rem;
 }
 
@@ -231,40 +232,46 @@ table.form-table td.example {
 }
 
 /********** button *********/
-input.btn, a.btn {
+input.btn,
+a.btn {
   font-size: 1rem;
   padding: 0.2rem 1rem;
   border: 1px solid #336699;
-  background:#fff;
-  color:#000;
+  background: #fff;
+  color: #000;
   white-space: normal;
   text-decoration: none;
 }
 
-input.btn:hover, a.btn:hover {
-  border-color:#336699;
-  background:#eff;
-  color:#000;
+input.btn:hover,
+a.btn:hover {
+  border-color: #336699;
+  background: #eff;
+  color: #000;
 }
 
-input.btn:active, a.btn:active {
-  border-color:#336699;
-  background:#cff;
-  color:#000;
+input.btn:active,
+a.btn:active {
+  border-color: #336699;
+  background: #cff;
+  color: #000;
 }
 
-input.btn:disabled, a.btn:disabled {
-  border-color:#336699;
-  background:#eee;
-  color:#999;
+input.btn:disabled,
+a.btn:disabled {
+  border-color: #336699;
+  background: #eee;
+  color: #999;
 }
 
-input.btn-block, a.btn-block {
+input.btn-block,
+a.btn-block {
   width: 100%;
   margin: 0.2rem;
 }
 
-input.btn-sm, a.btn-sm {
+input.btn-sm,
+a.btn-sm {
   font-size: 0.8rem;
   height: 1.6rem;
   padding: 0 1rem;
@@ -327,36 +334,36 @@ ul.menu-list li.menu a {
   width: 18rem;
   padding: 0.2rem 2rem;
   text-decoration: none;
-  border: outset 3px #CCFF99;
-  background-color: #BBDDFF;
+  border: outset 3px #ccff99;
+  background-color: #bbddff;
   color: #000;
   font-size: 1.2rem;
   margin: 0.5rem 0;
 }
 
 ul.menu-list li.menu a:hover {
-  border: inset 3px #1E7FE0;
-  background-color: #65B2FF;
+  border: inset 3px #1e7fe0;
+  background-color: #65b2ff;
 }
 
 ul.menu-list li.yellow a {
-  border: outset 3px #FFE599;
-  background-color:#FFFF99;
+  border: outset 3px #ffe599;
+  background-color: #ffff99;
 }
 
 ul.menu-list li.yellow a:hover {
-  border: inset 3px #FFCC99;
-  background-color:#DAB957;
+  border: inset 3px #ffcc99;
+  background-color: #dab957;
 }
 
 ul.menu-list li.pink a {
-  border: outset 3px #EFCCA8;
-  background-color:#F2D8F2;
+  border: outset 3px #efcca8;
+  background-color: #f2d8f2;
 }
 
 ul.menu-list li.pink a:hover {
-  border: inset 3px #EADBAD;
-  background-color:#EAADBC;
+  border: inset 3px #eadbad;
+  background-color: #eaadbc;
 }
 
 /********** project-detail *********/

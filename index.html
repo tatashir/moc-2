@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>index page</title>
-</head>
-<body>
-  <section>
-  <h1>this is login page</h1>
-  <p th:text="${userInfo.ordererName}"></p>
-  <form role="form" id="logout" th:action="@{/logout}" method="post">
-    <button type="submit">ログアウト</button>
-  </form>
-  </section>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>index page</title>
+  </head>
+  <body>
+    <section>
+      <h1>this is login page</h1>
+      <p th:text="${userInfo.ordererName}"></p>
+      <form role="form" id="logout" th:action="@{/logout}" method="post">
+        <button type="submit">ログアウト</button>
+      </form>
+    </section>
+  </body>
 </html>

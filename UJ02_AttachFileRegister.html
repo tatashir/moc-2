@@ -11,327 +11,423 @@
  //******************************************************
 */-->
 <!DOCTYPE html>
-<html lang="ja"
+<html
+  lang="ja"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layout/UC01_AccLayout}">
-<head>
-  <title>添付ファイル追加登録</title>
+  layout:decorate="~{layout/UC01_AccLayout}"
+>
+  <head>
+    <title>添付ファイル追加登録</title>
 
-<style type="text/css">
-*:focus{outline:none !important;}
-</style>
+    <style type="text/css">
+      *:focus {
+        outline: none !important;
+      }
+    </style>
 
-<script th:inline="javascript">
-var list = /*[[${filesinfo}]]*/ null;  //提出済み添付ファイルのリスト
-var fileMax = /*[[${baseinfo.registerableFileCnt}]]*/ 0;  //提出可能ファイル数
-var sumMax = /*[[${baseinfo.registerableFileSize}]]*/ 0;  //提出可能ファイルサイズ
-var currentSize = 0;                   //提出前状態での合計ファイルサイズ(選択状態の提出ファイル含む)
-var selectFileArray = null;           //提出ファイル情報リスト
+    <script th:inline="javascript">
+      var list = /*[[${filesinfo}]]*/ null; //提出済み添付ファイルのリスト
+      var fileMax = /*[[${baseinfo.registerableFileCnt}]]*/ 0; //提出可能ファイル数
+      var sumMax = /*[[${baseinfo.registerableFileSize}]]*/ 0; //提出可能ファイルサイズ
+      var currentSize = 0; //提出前状態での合計ファイルサイズ(選択状態の提出ファイル含む)
+      var selectFileArray = null; //提出ファイル情報リスト
 
-if(fileMax > list.length){
-  //提出済み添付ファイル数より提出可能ファイル数が大きい場合は、提出ファイル情報リストを生成
-  selectFileArray = Array(fileMax - list.length);
-  for(i=0;i < selectFileArray.length;i++){
-    var fileObj = new Object();
-    fileObj.name = null;  //提出ファイルのファイル名
-    fileObj.size = null;  //提出ファイルのサイズ
-    selectFileArray[i] = fileObj;
-  }
-}else{
-  //提出済み添付ファイル表示のみの場合は、空の提出ファイル情報リストを生成
-  selectFileArray = Array(0);
-}
+      if (fileMax > list.length) {
+        //提出済み添付ファイル数より提出可能ファイル数が大きい場合は、提出ファイル情報リストを生成
+        selectFileArray = Array(fileMax - list.length);
+        for (i = 0; i < selectFileArray.length; i++) {
+          var fileObj = new Object();
+          fileObj.name = null; //提出ファイルのファイル名
+          fileObj.size = null; //提出ファイルのサイズ
+          selectFileArray[i] = fileObj;
+        }
+      } else {
+        //提出済み添付ファイル表示のみの場合は、空の提出ファイル情報リストを生成
+        selectFileArray = Array(0);
+      }
 
-//初期処理
-function initScreen(){
-  //「戻る」ボタンの表示／非表示
-  var item = window.sessionStorage.getItem(['fromUJ0201']);
-  var obj = document.getElementById('returnbtn');
-  if(item == "true"){
-    //起点が提出済み添付ファイル一覧画面の場合は表示
-    obj.style.visibility = "visible";
-  }else{
-    //起点が提出済み添付ファイル一覧画面でない場合は非表示
-    obj.style.visibility = "hidden";
-  }
+      //初期処理
+      function initScreen() {
+        //「戻る」ボタンの表示／非表示
+        var item = window.sessionStorage.getItem(["fromUJ0201"]);
+        var obj = document.getElementById("returnbtn");
+        if (item == "true") {
+          //起点が提出済み添付ファイル一覧画面の場合は表示
+          obj.style.visibility = "visible";
+        } else {
+          //起点が提出済み添付ファイル一覧画面でない場合は非表示
+          obj.style.visibility = "hidden";
+        }
 
-  //提出済み添付ファイルリストが null の場合、即終了
-  if(list == null) return;
+        //提出済み添付ファイルリストが null の場合、即終了
+        if (list == null) return;
 
-  sumMax = sumMax * 1024 * 1024;  //提出可能ファイルサイズをMB単位からB単位にする
-  showSubmittedFileSize();        //提出済み添付ファイルのサイズ表示
-  // 合計ファイルサイズ算出
-  currentSize = list.reduce(function (accumulator, currentValue) {
-      return currentValue != null ? accumulator + Number(currentValue.fileSize): accumulator ;
-  },0);
+        sumMax = sumMax * 1024 * 1024; //提出可能ファイルサイズをMB単位からB単位にする
+        showSubmittedFileSize(); //提出済み添付ファイルのサイズ表示
+        // 合計ファイルサイズ算出
+        currentSize = list.reduce(function (accumulator, currentValue) {
+          return currentValue != null
+            ? accumulator + Number(currentValue.fileSize)
+            : accumulator;
+        }, 0);
 
-  showTotalFileSize();            //合計ファイルサイズ表示
-}
+        showTotalFileSize(); //合計ファイルサイズ表示
+      }
 
-//「提出」処理
-function saveFiles(){
-/*<![CDATA[*/
-  var action = /*[[@{/attachmentFiles/save}]]*/ null;
-/*]]>*/
+      //「提出」処理
+      function saveFiles() {
+        /*<![CDATA[*/
+        var action = /*[[@{/attachmentFiles/save}]]*/ null;
+        /*]]>*/
 
-  //ダイアログに表示するファイル名文字列を作成
-  var filenames = "";
-  for(i=0;i < selectFileArray.length;i++){
-    if(selectFileArray[i].name != null){
-      filenames = filenames + "  " + selectFileArray[i].name + '\n' ;
-    }
-  }
+        //ダイアログに表示するファイル名文字列を作成
+        var filenames = "";
+        for (i = 0; i < selectFileArray.length; i++) {
+          if (selectFileArray[i].name != null) {
+            filenames = filenames + "  " + selectFileArray[i].name + "\n";
+          }
+        }
 
-  if(window.confirm('以下の添付ファイルを追加します。\nよろしいですか？\n' + filenames)){
-    document.postForm.action = action;
-    document.postForm.submit();
-  }else{
-    window.alert('処理をキャンセルしました。');
-  }
-  clearError();  //メッセージエリアクリア
-}
+        if (
+          window.confirm(
+            "以下の添付ファイルを追加します。\nよろしいですか？\n" + filenames
+          )
+        ) {
+          document.postForm.action = action;
+          document.postForm.submit();
+        } else {
+          window.alert("処理をキャンセルしました。");
+        }
+        clearError(); //メッセージエリアクリア
+      }
 
-//提出済み添付ファイルの「削除」処理
-function deleteFile(num){
-/*<![CDATA[*/
-  var action = /*[[@{/attachmentFiles/delete}]]*/ null;
-/*]]>*/
+      //提出済み添付ファイルの「削除」処理
+      function deleteFile(num) {
+        /*<![CDATA[*/
+        var action = /*[[@{/attachmentFiles/delete}]]*/ null;
+        /*]]>*/
 
-  if(window.confirm('提出済みの添付ファイルを削除します。\nよろしいですか？')){
-    document.postForm.attachedDocumentNo.value=list[num].attachedDocumentNo;
-    document.postForm.fileName.value=list[num].fileName;
+        if (
+          window.confirm(
+            "提出済みの添付ファイルを削除します。\nよろしいですか？"
+          )
+        ) {
+          document.postForm.attachedDocumentNo.value =
+            list[num].attachedDocumentNo;
+          document.postForm.fileName.value = list[num].fileName;
 
-    document.postForm.action =action;
-    document.postForm.submit();
-  }else{
-    window.alert('処理をキャンセルしました。');
-  }
-  clearError();  //メッセージエリアクリア
-}
+          document.postForm.action = action;
+          document.postForm.submit();
+        } else {
+          window.alert("処理をキャンセルしました。");
+        }
+        clearError(); //メッセージエリアクリア
+      }
 
-//アップロード選択ファイルの「削除」処理
-function clearFile(num){
-  //ファイルが選択されていない場合はなにも処理せずに終了
-  var obj2 = document.getElementById('selectFileName'+ num);
-  if(!obj2.value) return;
+      //アップロード選択ファイルの「削除」処理
+      function clearFile(num) {
+        //ファイルが選択されていない場合はなにも処理せずに終了
+        var obj2 = document.getElementById("selectFileName" + num);
+        if (!obj2.value) return;
 
-  if(window.confirm('選択されたファイルを削除します。\nよろしいですか？')){
-    var obj1 = document.getElementById('fileSize'+ num);
-    obj1.textContent = null;
-    obj2.value = null;
+        if (
+          window.confirm("選択されたファイルを削除します。\nよろしいですか？")
+        ) {
+          var obj1 = document.getElementById("fileSize" + num);
+          obj1.textContent = null;
+          obj2.value = null;
 
-    currentSize -= selectFileArray[num - list.length].size;
-    selectFileArray[num - list.length].name = null;
-    selectFileArray[num - list.length].size = null;
-    showTotalFileSize();  //合計ファイルサイズ表示更新
-  }else{
-    window.alert('処理をキャンセルしました。');
-  }
-  clearError();  //メッセージエリアクリア
-}
+          currentSize -= selectFileArray[num - list.length].size;
+          selectFileArray[num - list.length].name = null;
+          selectFileArray[num - list.length].size = null;
+          showTotalFileSize(); //合計ファイルサイズ表示更新
+        } else {
+          window.alert("処理をキャンセルしました。");
+        }
+        clearError(); //メッセージエリアクリア
+      }
 
-//提出済みの各添付ファイルサイズ表示
-function showSubmittedFileSize(){
-  //各ファイルのサイズを表示
-  for(i=0;i < list.length;i++){
-    var sizeM = convertFileSizeForDisp(list[i].fileSize);
-    var obj = document.getElementById('fileSize'+i);
-    obj.textContent = sizeM + " MB";
-  }
-}
+      //提出済みの各添付ファイルサイズ表示
+      function showSubmittedFileSize() {
+        //各ファイルのサイズを表示
+        for (i = 0; i < list.length; i++) {
+          var sizeM = convertFileSizeForDisp(list[i].fileSize);
+          var obj = document.getElementById("fileSize" + i);
+          obj.textContent = sizeM + " MB";
+        }
+      }
 
-//合計ファイルサイズ表示
-function showTotalFileSize(){
-  //提出ファイルの有無判定
-  var isSelected = false;
-  for(i=0;i < selectFileArray.length;i++){
-    if(selectFileArray[i].name){
-      isSelected = true;
-      break;
-    }
-  }
-  //提出済み添付ファイルがなく、提出ファイルもない場合のみ "0.0"とする
-  if((list.length == 0) && (isSelected == false)){
-    calculateSum = 0.0;
-  //上記以外は、提出済み添付ファイルと提出ファイルの合計ファイルサイズを表示用の値に変換
-  }else{
-    calculateSum = convertFileSizeForDisp(currentSize);
-  }
-  //表示文字列設定
-  var obj0 = document.getElementById('sumFileSize');
-  var sumSizeText = "合計ファイルサイズ：" + calculateSum.toFixed(1) + " MB";
-  obj0.textContent = sumSizeText;
+      //合計ファイルサイズ表示
+      function showTotalFileSize() {
+        //提出ファイルの有無判定
+        var isSelected = false;
+        for (i = 0; i < selectFileArray.length; i++) {
+          if (selectFileArray[i].name) {
+            isSelected = true;
+            break;
+          }
+        }
+        //提出済み添付ファイルがなく、提出ファイルもない場合のみ "0.0"とする
+        if (list.length == 0 && isSelected == false) {
+          calculateSum = 0.0;
+          //上記以外は、提出済み添付ファイルと提出ファイルの合計ファイルサイズを表示用の値に変換
+        } else {
+          calculateSum = convertFileSizeForDisp(currentSize);
+        }
+        //表示文字列設定
+        var obj0 = document.getElementById("sumFileSize");
+        var sumSizeText =
+          "合計ファイルサイズ：" + calculateSum.toFixed(1) + " MB";
+        obj0.textContent = sumSizeText;
 
-  //提出可能ファイルサイズ超過判定
-  //超過した場合は赤文字で表示
-  if(currentSize > sumMax){
-    obj0.style.color="red";
-  }else{
-    obj0.style.color="black";
-  }
-}
+        //提出可能ファイルサイズ超過判定
+        //超過した場合は赤文字で表示
+        if (currentSize > sumMax) {
+          obj0.style.color = "red";
+        } else {
+          obj0.style.color = "black";
+        }
+      }
 
-//アップロードファイル選択処理
-function selectFile(fList,num){
-  var obj = document.getElementById('fileSize'+ num );
-  if((obj != null) && (fList.length != 0)){
-    selectSize = convertFileSizeForDisp(fList[0].size);
-    obj.textContent = selectSize + " MB";
+      //アップロードファイル選択処理
+      function selectFile(fList, num) {
+        var obj = document.getElementById("fileSize" + num);
+        if (obj != null && fList.length != 0) {
+          selectSize = convertFileSizeForDisp(fList[0].size);
+          obj.textContent = selectSize + " MB";
 
-    if(selectFileArray[num - list.length].size != null){
-      //すでに選択されたファイルがある場合は合計サイズから減算
-      currentSize -= selectFileArray[num - list.length].size;
-    }
-    //選択されたファイルのサイズを合計サイズに加算
-    currentSize += fList[0].size;
+          if (selectFileArray[num - list.length].size != null) {
+            //すでに選択されたファイルがある場合は合計サイズから減算
+            currentSize -= selectFileArray[num - list.length].size;
+          }
+          //選択されたファイルのサイズを合計サイズに加算
+          currentSize += fList[0].size;
 
-    //選択されたファイルのファイル名とサイズをリストに格納
-    selectFileArray[num - list.length].name = fList[0].name;
-    selectFileArray[num - list.length].size = fList[0].size;
-  }
+          //選択されたファイルのファイル名とサイズをリストに格納
+          selectFileArray[num - list.length].name = fList[0].name;
+          selectFileArray[num - list.length].size = fList[0].size;
+        }
 
-/* 2021.06.01 運用監理_コアシステム新ブラウザ対応 add start */
-  //ファイルが選択されていない場合
-  if((obj != null) && (fList.length == 0)){
-    //ファイルサイズ表示をクリア
-    obj.textContent = null;
+        /* 2021.06.01 運用監理_コアシステム新ブラウザ対応 add start */
+        //ファイルが選択されていない場合
+        if (obj != null && fList.length == 0) {
+          //ファイルサイズ表示をクリア
+          obj.textContent = null;
 
-    if(selectFileArray[num - list.length].size != null){
-      //すでに選択されたファイルがある場合は合計サイズから減算
-      currentSize -= selectFileArray[num - list.length].size;
-    }
-    //リスト内のファイル名とサイズをクリア
-    selectFileArray[num - list.length].name = null;
-    selectFileArray[num - list.length].size = null;
-  }
-/* 2021.06.01 運用監理_コアシステム新ブラウザ対応 add end */
+          if (selectFileArray[num - list.length].size != null) {
+            //すでに選択されたファイルがある場合は合計サイズから減算
+            currentSize -= selectFileArray[num - list.length].size;
+          }
+          //リスト内のファイル名とサイズをクリア
+          selectFileArray[num - list.length].name = null;
+          selectFileArray[num - list.length].size = null;
+        }
+        /* 2021.06.01 運用監理_コアシステム新ブラウザ対応 add end */
 
-  showTotalFileSize();  //合計ファイルサイズ表示更新
-  clearError();     //メッセージエリアクリア
-}
+        showTotalFileSize(); //合計ファイルサイズ表示更新
+        clearError(); //メッセージエリアクリア
+      }
 
-//メッセージエリアクリア
-function clearError(){
-  //メッセージタグをすべて削除
-  removeElementById('message');
-}
-
-</script>
-</head>
-<body onload="initScreen()">
-  <div class="container" layout:fragment="contents">
-    <div class="screen-title">
-      <div class="row">
-        <div class="col-12">
-          <h2>添付ファイル追加登録</h2>
+      //メッセージエリアクリア
+      function clearError() {
+        //メッセージタグをすべて削除
+        removeElementById("message");
+      }
+    </script>
+  </head>
+  <body onload="initScreen()">
+    <div class="container" layout:fragment="contents">
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12">
+            <h2>添付ファイル追加登録</h2>
+          </div>
         </div>
       </div>
-    </div><!-- screen-title -->
+      <!-- screen-title -->
 
-    <div class="top-area">
-      <div class="row">
-        <div class="col-lg-6">
-          <table class="form-table">
-            <tr><th>調達案件番号</th><td th:text="${baseinfo.projectNo}"></td></tr>
-            <tr><th>調達案件名称</th>
-              <td>
-                 <a th:text="${baseinfo.projectName}" href="#" th:onClick="openProjectDetailWin([[@{'/projects/'} + ${baseinfo.projectNo }]])"></a>
-              </td>
-            </tr>
-            <tr><th>対象申請書種別</th><td th:text="${baseinfo.applicationFormName}"></td></tr>
-            <tr><th>対象資料種別</th><td th:text="${baseinfo.documentTypeName}"></td></tr>
-          </table>
+      <div class="top-area">
+        <div class="row">
+          <div class="col-lg-6">
+            <table class="form-table">
+              <tr>
+                <th>調達案件番号</th>
+                <td th:text="${baseinfo.projectNo}"></td>
+              </tr>
+              <tr>
+                <th>調達案件名称</th>
+                <td>
+                  <a
+                    th:text="${baseinfo.projectName}"
+                    href="#"
+                    th:onClick="openProjectDetailWin([[@{'/projects/'} + ${baseinfo.projectNo }]])"
+                  ></a>
+                </td>
+              </tr>
+              <tr>
+                <th>対象申請書種別</th>
+                <td th:text="${baseinfo.applicationFormName}"></td>
+              </tr>
+              <tr>
+                <th>対象資料種別</th>
+                <td th:text="${baseinfo.documentTypeName}"></td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
-    </div><!-- top-area -->
+      <!-- top-area -->
 
-    <div class="middle-area">
-      <div class="row justify-content-sm-center">
-        <div class="col-md-8 align-left alert-message">
-          <p class="indentback" th:text="'※全' + ${baseinfo.registerableFileCnt} + 'ファイル、合計' + ${baseinfo.registerableFileSize} + 'MBまで提出可能です(提出済みファイルを含む)。'"></p>
-          <p class="indentback">
-            ※ファイルはウイルスチェックを最新版のチェックデータで行ってください。<br>
-          </p>
+      <div class="middle-area">
+        <div class="row justify-content-sm-center">
+          <div class="col-md-8 align-left alert-message">
+            <p
+              class="indentback"
+              th:text="'※全' + ${baseinfo.registerableFileCnt} + 'ファイル、合計' + ${baseinfo.registerableFileSize} + 'MBまで提出可能です(提出済みファイルを含む)。'"
+            ></p>
+            <p class="indentback">
+              ※ファイルはウイルスチェックを最新版のチェックデータで行ってください。<br />
+            </p>
+          </div>
+        </div>
+
+        <div th:if="${message != null}" class="error" id="message">
+          <ul>
+            <li
+              th:if="${message.message != null}"
+              th:text="${message.message}"
+            ></li>
+          </ul>
+          <ul
+            th:if="${message.subInfoList != null}"
+            style="list-style-type: none"
+            th:each="subInfo : ${message.subInfoList}"
+            th:id="subInfo + ${subInfoStat.index}"
+          >
+            <li th:text="${message.subInfoList[subInfoStat.index]}"></li>
+          </ul>
         </div>
       </div>
+      <!-- middle-area -->
 
-      <div th:if="${message != null}" class="error" id="message">
-        <ul>
-          <li th:if="${message.message != null}" th:text="${message.message}"></li>
-        </ul>
-        <ul th:if="${message.subInfoList != null}" style="list-style-type:none"
-          th:each="subInfo : ${message.subInfoList}" th:id="subInfo + ${subInfoStat.index}">
-
-          <li th:text="${message.subInfoList[subInfoStat.index]}"></li>
-        </ul>
-      </div>
-    </div><!-- middle-area -->
-
-    <div class="bottom-area">
-      <div class="attach-doc-form">
-        <form role="form" name="postForm" th:action="@{'/attachmentFiles/save'}" enctype="multipart/form-data" method="post" th:object="${inForm}">
-          <div class="row list-controll">
-            <div class="col-12 align-right">
-              <div class="controll-message">
-                <div id="sumFileSize"></div>
-              </div>
-              <div>
-                <input type="hidden" name="attachedDocumentNo" value=""/>
-                <input type="hidden" name="fileName" value=""/>
+      <div class="bottom-area">
+        <div class="attach-doc-form">
+          <form
+            role="form"
+            name="postForm"
+            th:action="@{'/attachmentFiles/save'}"
+            enctype="multipart/form-data"
+            method="post"
+            th:object="${inForm}"
+          >
+            <div class="row list-controll">
+              <div class="col-12 align-right">
+                <div class="controll-message">
+                  <div id="sumFileSize"></div>
+                </div>
+                <div>
+                  <input type="hidden" name="attachedDocumentNo" value="" />
+                  <input type="hidden" name="fileName" value="" />
+                </div>
               </div>
             </div>
-          </div><!-- list-controll -->
+            <!-- list-controll -->
 
-          <div class="row result-list">
-            <!-- 提出済み添付ファイル数が提出可能ファイル数以上の場合：すべて提出済み添付ファイルを表示
+            <div class="row result-list">
+              <!-- 提出済み添付ファイル数が提出可能ファイル数以上の場合：すべて提出済み添付ファイルを表示
                  提出済み添付ファイル数が提出可能ファイル数未満の場合：アップロードファイル選択行あり
                    として行数を設定 -->
-            <div class="col-12"
-              th:with="rowCnt=${baseinfo.registerableFileCnt <= #lists.size(filesinfo)} ?
-                           ${#lists.size(filesinfo)} : ${baseinfo.registerableFileCnt}">
-              <table>
-                <tr>
-                  <th width="5%">No.</th>
-                  <th width="75%">添付ファイル選択</th>
-                  <th width="10%">サイズ</th>
-                  <th width="10%"></th>
-                </tr>
+              <div
+                class="col-12"
+                th:with="rowCnt=${baseinfo.registerableFileCnt <= #lists.size(filesinfo)} ?
+                           ${#lists.size(filesinfo)} : ${baseinfo.registerableFileCnt}"
+              >
+                <table>
+                  <tr>
+                    <th width="5%">No.</th>
+                    <th width="75%">添付ファイル選択</th>
+                    <th width="10%">サイズ</th>
+                    <th width="10%"></th>
+                  </tr>
 
-                <!-- 上記で設定した行数分ループ -->
-                <tr th:each="i : ${#numbers.sequence(0, rowCnt-1)}" th:value="${i}">
-                  <td class="align-center" th:text="${i}+1"></td>
-                  <td class="align-left">
-                    <!-- 提出済み添付ファイルを表示する場合 -->
-                    <div th:if="${#lists.size(filesinfo)} > ${i}" th:text="${filesinfo[i].fileName}" th:id="'fileName'+${i}"></div>
-                    <!-- アップロードファイル選択を表示する場合 -->
-                    <input th:if="${#lists.size(filesinfo)} <= ${i}" type="file" name="filesList" th:id="'selectFileName'+${i}"
-                      size="40" th:onChange="'selectFile(this.files,'+${i}+')'" th:onclick="this.blur()"/>
-                  </td>
-                  <td class="align-right">
-                    <div th:id="'fileSize' + ${i}"> </div>
-                  </td>
-                  <td class="align-center">
-                    <!-- 提出済み添付ファイルの場合の「削除」ボタン -->
-                    <input th:id="'deleteButton' + ${i}" th:if="${#lists.size(filesinfo)} > ${i}" type="button" class="btn" name="" value="削除"
-                      th:onclick="'deleteFile('+${i}+')'"/>
-                    <!-- アップロードファイル選択の場合の「削除」ボタン -->
-                    <input th:id="'clearButton' + ${i}" th:if="${#lists.size(filesinfo)} <= ${i}" type="button" class="btn" name="" value="削除"
-                      th:onclick="'clearFile('+${i}+')'" />
-                  </td>
-                </tr>
-              </table>
+                  <!-- 上記で設定した行数分ループ -->
+                  <tr
+                    th:each="i : ${#numbers.sequence(0, rowCnt-1)}"
+                    th:value="${i}"
+                  >
+                    <td class="align-center" th:text="${i}+1"></td>
+                    <td class="align-left">
+                      <!-- 提出済み添付ファイルを表示する場合 -->
+                      <div
+                        th:if="${#lists.size(filesinfo)} > ${i}"
+                        th:text="${filesinfo[i].fileName}"
+                        th:id="'fileName'+${i}"
+                      ></div>
+                      <!-- アップロードファイル選択を表示する場合 -->
+                      <input
+                        th:if="${#lists.size(filesinfo)} <= ${i}"
+                        type="file"
+                        name="filesList"
+                        th:id="'selectFileName'+${i}"
+                        size="40"
+                        th:onChange="'selectFile(this.files,'+${i}+')'"
+                        th:onclick="this.blur()"
+                      />
+                    </td>
+                    <td class="align-right">
+                      <div th:id="'fileSize' + ${i}"></div>
+                    </td>
+                    <td class="align-center">
+                      <!-- 提出済み添付ファイルの場合の「削除」ボタン -->
+                      <input
+                        th:id="'deleteButton' + ${i}"
+                        th:if="${#lists.size(filesinfo)} > ${i}"
+                        type="button"
+                        class="btn"
+                        name=""
+                        value="削除"
+                        th:onclick="'deleteFile('+${i}+')'"
+                      />
+                      <!-- アップロードファイル選択の場合の「削除」ボタン -->
+                      <input
+                        th:id="'clearButton' + ${i}"
+                        th:if="${#lists.size(filesinfo)} <= ${i}"
+                        type="button"
+                        class="btn"
+                        name=""
+                        value="削除"
+                        th:onclick="'clearFile('+${i}+')'"
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-12 align-center">
-              <input type="button" name="" value="提出" class="btn" th:onClick="'saveFiles()'"/>
-              <input type="button" id="returnbtn" name="" value="戻る" class="btn" th:onClick="'location.href=\'' + @{'/attachmentFiles'} + '\''"/>
+            <div class="row">
+              <div class="col-12 align-center">
+                <input
+                  type="button"
+                  name=""
+                  value="提出"
+                  class="btn"
+                  th:onClick="'saveFiles()'"
+                />
+                <input
+                  type="button"
+                  id="returnbtn"
+                  name=""
+                  value="戻る"
+                  class="btn"
+                  th:onClick="'location.href=\'' + @{'/attachmentFiles'} + '\''"
+                />
+              </div>
             </div>
-          </div>
-        </form>
-      </div><!-- result-list -->
-    </div><!-- bottom-area -->
-  </div>
-</body>
+          </form>
+        </div>
+        <!-- result-list -->
+      </div>
+      <!-- bottom-area -->
+    </div>
+  </body>
 </html>

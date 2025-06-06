@@ -10,169 +10,255 @@
  //******************************************************
 */-->
 <!DOCTYPE html>
-<html lang="ja"
+<html
+  lang="ja"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layout/UC01_OrdLayout}">
-<head>
-  <title>添付ファイル一覧</title>
+  layout:decorate="~{layout/UC01_OrdLayout}"
+>
+  <head>
+    <title>添付ファイル一覧</title>
 
-  <script th:inline="javascript">
-    var list = /*[[${fileList}]]*/ null;
+    <script th:inline="javascript">
+      var list = /*[[${fileList}]]*/ null;
 
-    /**
-     * ファイル削除処理
-     **/
-    function deletefile() {
-      // check selected exist
-      var chekBox = document.getElementsByName('deleteFileNo');
-      var check = false;
-      for(i = 0 ;i < chekBox.length;i++){
-        if(chekBox[i].checked){
-          check = true;
-          break;
+      /**
+       * ファイル削除処理
+       **/
+      function deletefile() {
+        // check selected exist
+        var chekBox = document.getElementsByName("deleteFileNo");
+        var check = false;
+        for (i = 0; i < chekBox.length; i++) {
+          if (chekBox[i].checked) {
+            check = true;
+            break;
+          }
+        }
+        if (!check) {
+          window.alert("ファイルが選択されていません。");
+          return;
+        }
+        if (
+          !window.confirm("選択されたファイルを削除します。よろしいですか？")
+        ) {
+          window.alert("処理をキャンセルしました。");
+          return;
+        }
+        // deletefile info post
+        document.postForm.submit();
+      }
+      /**
+       * 初期表示処理
+       **/
+      function initScreen() {
+        // set filesize
+        if (list == null) return;
+        for (i = 0; i < list.length; i++) {
+          var sizeMB = convertFileSizeForDisp(list[i].fileSize);
+          var obj = document.getElementById("fileSize" + i);
+          obj.textContent = sizeMB + " MB";
         }
       }
-      if(!check){
-        window.alert('ファイルが選択されていません。');
-        return;
-      }
-      if (!window.confirm('選択されたファイルを削除します。よろしいですか？')){
-        window.alert('処理をキャンセルしました。');
-        return;
-      }
-      // deletefile info post
-      document.postForm.submit();
-    }
-    /**
-     * 初期表示処理
-     **/
-    function initScreen(){
-      // set filesize
-      if(list == null) return;
-      for(i = 0;i < list.length;i++){
-        var sizeMB =convertFileSizeForDisp(list[i].fileSize);
-        var obj = document.getElementById('fileSize' + i);
-        obj.textContent = sizeMB + " MB";
-      }
-    }
-  </script>
-</head>
-<body onload="initScreen()">
-  <div class="container" layout:fragment="contents">
-    <div class="breadcrumbs">
-      <div class="row">
-        <div class="col-12">
-          <ul>
-            <li th:if="${#authentication.principal.screenTransitionFlag}">
-              <a th:href="@{'/projects/condition'}">調達案件検索の表示</a>
-            </li>
-            <li th:if="${#authentication.principal.screenTransitionFlag}">
-              <a th:href="@{'/projects'(page=${projectPageNo})}">調達案件一覧の表示</a>
-            </li>
-            <li><a th:href="@{'/accepters'(projectNo=*{project.projectNo}, page=${accepterPageNo})}">参加業者一覧の表示</a></li>
-            <li>添付ファイル一覧</li>
-          </ul>
-        </div>
-      </div>
-    </div><!-- breadcrumbs -->
-
-    <div class="screen-title">
-      <div class="row">
-        <div class="col-12">
-          <h2>添付ファイル一覧</h2>
-        </div>
-      </div>
-    </div><!-- screen-title -->
-
-    <div class="top-area">
-      <div class="row">
-        <div class="col-lg-6">
-          <table class="table">
-            <tr><th>調達案件番号</th>
-              <td th:text="${project.projectNo}"></td>
-            </tr>
-            <tr><th>調達案件名称</th>
-              <td >
-                <a th:text="${project.projectName}" href="#" th:onClick="openProjectDetailWin([[@{'/projects/'} + ${project.projectNo}]])"></a>
-              </td>
-            </tr>
-            <tr><th>業者番号</th><td th:text="${accepter.accepterNo}"></td></tr>
-            <tr><th>業者名称</th><td th:text="${accepter.accepterName}"></td></tr>
-          </table>
-        </div>
-      </div>
-    </div><!-- top-area -->
-
-    <div class="bottom-area">
-      <div class="row list-controll">
-        <div class="col-12 align-right">
-          <div class="btn-group">
-            <input class="btn" type="button" name="" value="再表示" 
-              th:onClick="'location.href=\'' + @{'/attachmentFiles'(accepterNo=${accepter.accepterNo}, projectNo=${project.projectNo})} + '\''" />
-          </div>
-          <div class="controll-message">
-            <div th:text="最終更新日時： + ${#dates.format(new java.util.Date(),'yyyy/MM/dd HH:mm:ss')}"></div>
-          </div>
-        </div>
-      </div><!-- list-controll -->
-
-      <div class="row list-controll">
-        <div class="col-12 align-right">
-          <input class="btn" type="button" name="" value="ファイル削除" onClick="deletefile()" />
-        </div>
-      </div><!-- list-controll -->
-
-      <div th:if="${message != null}" class="error" id ="message">
-        <ul>
-          <li th:if="${message.message != null}" th:utext="${message.message}"></li>
-        </ul>
-        <ul th:if="${message.subInfoList.size() > 0}" style="list-style-type:none">
-          <li th:each="subInfo : ${message.subInfoList}" th:text="${subInfo}"></li>
-        </ul>
-      </div>
-
-      <form role="form" name="postForm" th:action="@{/attachmentFiles/delete}"  method="post">
-        <div class="row result-list">
-          <input type="hidden" name="projectNo" th:value="${project.projectNo}" />
-          <input type="hidden" name="accepterNo" th:value="${accepter.accepterNo}" />
+    </script>
+  </head>
+  <body onload="initScreen()">
+    <div class="container" layout:fragment="contents">
+      <div class="breadcrumbs">
+        <div class="row">
           <div class="col-12">
-            <table>
+            <ul>
+              <li th:if="${#authentication.principal.screenTransitionFlag}">
+                <a th:href="@{'/projects/condition'}">調達案件検索の表示</a>
+              </li>
+              <li th:if="${#authentication.principal.screenTransitionFlag}">
+                <a th:href="@{'/projects'(page=${projectPageNo})}"
+                  >調達案件一覧の表示</a
+                >
+              </li>
+              <li>
+                <a
+                  th:href="@{'/accepters'(projectNo=*{project.projectNo}, page=${accepterPageNo})}"
+                  >参加業者一覧の表示</a
+                >
+              </li>
+              <li>添付ファイル一覧</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- breadcrumbs -->
+
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12">
+            <h2>添付ファイル一覧</h2>
+          </div>
+        </div>
+      </div>
+      <!-- screen-title -->
+
+      <div class="top-area">
+        <div class="row">
+          <div class="col-lg-6">
+            <table class="table">
               <tr>
-                <th width="5%"></th>
-                <th width="5%">No.</th>
-                <th width="20%">申請書種別</th>
-                <th width="10%">資料種別</th>
-                <th width="33%">ファイル名称</th>
-                <th width="8%">サイズ</th>
-                <th width="20%">提出日時</th>
+                <th>調達案件番号</th>
+                <td th:text="${project.projectNo}"></td>
               </tr>
-              <tr th:each="attachedDocumentForm : ${fileList}"
-                      th:object="${attachedDocumentForm}">
+              <tr>
+                <th>調達案件名称</th>
                 <td>
-                  <input type="checkbox" id="deleteFileNo" name="deleteFileNo" th:value="*{attachedDocumentNo}"
-                    th:checked="${attachedDocumentForm.deleteFileNo == null ? 'false' :'true'}">
+                  <a
+                    th:text="${project.projectName}"
+                    href="#"
+                    th:onClick="openProjectDetailWin([[@{'/projects/'} + ${project.projectNo}]])"
+                  ></a>
                 </td>
-                <td th:text="${attachedDocumentFormStat.count}"></td>
-                <td th:text="*{applicationFormName}"></td>
-                <td th:text="*{documentTypeName}"></td>
-                <td class="align-left">
-                  <a th:if="*{deletedStatus == '0'}"
-                    th:href="@{'/attachmentFiles/download'(projectNo=${project.projectNo}, accepterNo=*{accepterNo}, attachedDocumentNo=*{attachedDocumentNo})} "
-                    th:text="*{fileName}" th:onclick="removeElementById('message')"></a>
-                  <div th:unless="*{deletedStatus == '0'}" th:text="*{fileName}"></div>
-                </td>
-                <td>
-                  <div th:id="'fileSize' + ${attachedDocumentFormStat.index}"> </div>
-                </td>
-                <td class="align-left" th:text="${#dates.format(attachedDocumentForm.presentedAt,'yyyy/MM/dd HH:mm:ss')}">20xx/xx/xx xx:xx:xx</td>
+              </tr>
+              <tr>
+                <th>業者番号</th>
+                <td th:text="${accepter.accepterNo}"></td>
+              </tr>
+              <tr>
+                <th>業者名称</th>
+                <td th:text="${accepter.accepterName}"></td>
               </tr>
             </table>
           </div>
-        </div><!-- result-list -->
-      </form>
-    </div><!-- bottom-area -->
-  </div><!-- container -->
-</body>
+        </div>
+      </div>
+      <!-- top-area -->
+
+      <div class="bottom-area">
+        <div class="row list-controll">
+          <div class="col-12 align-right">
+            <div class="btn-group">
+              <input
+                class="btn"
+                type="button"
+                name=""
+                value="再表示"
+                th:onClick="'location.href=\'' + @{'/attachmentFiles'(accepterNo=${accepter.accepterNo}, projectNo=${project.projectNo})} + '\''"
+              />
+            </div>
+            <div class="controll-message">
+              <div
+                th:text="最終更新日時： + ${#dates.format(new java.util.Date(),'yyyy/MM/dd HH:mm:ss')}"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <!-- list-controll -->
+
+        <div class="row list-controll">
+          <div class="col-12 align-right">
+            <input
+              class="btn"
+              type="button"
+              name=""
+              value="ファイル削除"
+              onClick="deletefile()"
+            />
+          </div>
+        </div>
+        <!-- list-controll -->
+
+        <div th:if="${message != null}" class="error" id="message">
+          <ul>
+            <li
+              th:if="${message.message != null}"
+              th:utext="${message.message}"
+            ></li>
+          </ul>
+          <ul
+            th:if="${message.subInfoList.size() > 0}"
+            style="list-style-type: none"
+          >
+            <li
+              th:each="subInfo : ${message.subInfoList}"
+              th:text="${subInfo}"
+            ></li>
+          </ul>
+        </div>
+
+        <form
+          role="form"
+          name="postForm"
+          th:action="@{/attachmentFiles/delete}"
+          method="post"
+        >
+          <div class="row result-list">
+            <input
+              type="hidden"
+              name="projectNo"
+              th:value="${project.projectNo}"
+            />
+            <input
+              type="hidden"
+              name="accepterNo"
+              th:value="${accepter.accepterNo}"
+            />
+            <div class="col-12">
+              <table>
+                <tr>
+                  <th width="5%"></th>
+                  <th width="5%">No.</th>
+                  <th width="20%">申請書種別</th>
+                  <th width="10%">資料種別</th>
+                  <th width="33%">ファイル名称</th>
+                  <th width="8%">サイズ</th>
+                  <th width="20%">提出日時</th>
+                </tr>
+                <tr
+                  th:each="attachedDocumentForm : ${fileList}"
+                  th:object="${attachedDocumentForm}"
+                >
+                  <td>
+                    <input
+                      type="checkbox"
+                      id="deleteFileNo"
+                      name="deleteFileNo"
+                      th:value="*{attachedDocumentNo}"
+                      th:checked="${attachedDocumentForm.deleteFileNo == null ? 'false' :'true'}"
+                    />
+                  </td>
+                  <td th:text="${attachedDocumentFormStat.count}"></td>
+                  <td th:text="*{applicationFormName}"></td>
+                  <td th:text="*{documentTypeName}"></td>
+                  <td class="align-left">
+                    <a
+                      th:if="*{deletedStatus == '0'}"
+                      th:href="@{'/attachmentFiles/download'(projectNo=${project.projectNo}, accepterNo=*{accepterNo}, attachedDocumentNo=*{attachedDocumentNo})} "
+                      th:text="*{fileName}"
+                      th:onclick="removeElementById('message')"
+                    ></a>
+                    <div
+                      th:unless="*{deletedStatus == '0'}"
+                      th:text="*{fileName}"
+                    ></div>
+                  </td>
+                  <td>
+                    <div
+                      th:id="'fileSize' + ${attachedDocumentFormStat.index}"
+                    ></div>
+                  </td>
+                  <td
+                    class="align-left"
+                    th:text="${#dates.format(attachedDocumentForm.presentedAt,'yyyy/MM/dd HH:mm:ss')}"
+                  >
+                    20xx/xx/xx xx:xx:xx
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- result-list -->
+        </form>
+      </div>
+      <!-- bottom-area -->
+    </div>
+    <!-- container -->
+  </body>
 </html>

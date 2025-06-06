@@ -1,35 +1,54 @@
 <!DOCTYPE html>
-<html lang="ja"
-  xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>SSO模擬HTML -応札者-</title>
-  <style>
-    label {
-      display: inline-block;
-      width: 8rem;
-    }
-    .form-controll {
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
-  <p>SSO模擬HTML -応札者-</p>
-  <form id="login_form" th:action="@{'/sso_login'}" method="post">
-    <div><label>認証情報</label><input type="text" name="authInfo" value="1234567890"/></div>
-    <div><label>調達案件番号</label><input type="text" name="projectNo" /></div>
-    <div><label>受注者番号</label><input type="text" name="accepterNo" /></div>
-    <div><label>申請書種別番号</label><input type="text" name="applicationFormNo" /></div>
-    <div><label>資料種別番号</label><input type="text" name="documentTypeNo" /></div>
-    <div><label>受注者名称</label><input type="text" name="accepterName" /></div>
-    <div><label>入札状態</label><input type="text" name="bidStatus" /></div>
-    <div><label>応札者状態</label><input type="text" name="accepterStatus" /></div>
-    <div><label>申請状態</label><input type="text" name="applicationStatus" /></div>
-    <div><label>画面ID</label><input type="text" name="screenID" /></div>
-    <div class="form-controll"><input id="loginButton" type="submit" value="送信"></div>
-  </form>
-</body>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SSO模擬HTML -応札者-</title>
+    <style>
+      label {
+        display: inline-block;
+        width: 8rem;
+      }
+      .form-controll {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>SSO模擬HTML -応札者-</p>
+    <form id="login_form" th:action="@{'/sso_login'}" method="post">
+      <div>
+        <label>認証情報</label
+        ><input type="text" name="authInfo" value="1234567890" />
+      </div>
+      <div>
+        <label>調達案件番号</label><input type="text" name="projectNo" />
+      </div>
+      <div>
+        <label>受注者番号</label><input type="text" name="accepterNo" />
+      </div>
+      <div>
+        <label>申請書種別番号</label
+        ><input type="text" name="applicationFormNo" />
+      </div>
+      <div>
+        <label>資料種別番号</label><input type="text" name="documentTypeNo" />
+      </div>
+      <div>
+        <label>受注者名称</label><input type="text" name="accepterName" />
+      </div>
+      <div><label>入札状態</label><input type="text" name="bidStatus" /></div>
+      <div>
+        <label>応札者状態</label><input type="text" name="accepterStatus" />
+      </div>
+      <div>
+        <label>申請状態</label><input type="text" name="applicationStatus" />
+      </div>
+      <div><label>画面ID</label><input type="text" name="screenID" /></div>
+      <div class="form-controll">
+        <input id="loginButton" type="submit" value="送信" />
+      </div>
+    </form>
+  </body>
 </html>

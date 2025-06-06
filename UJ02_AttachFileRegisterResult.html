@@ -11,55 +11,70 @@
  //******************************************************
 */-->
 <!DOCTYPE html>
-<html lang="ja"
+<html
+  lang="ja"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layout/UC01_AccLayout}">
-<head>
-<title>添付ファイル追加登録結果</title>
-</head>
-<body>
-  <div class="container" layout:fragment="contents">
-    <div class="screen-title">
-      <div class="row">
-        <div class="col-12">
-          <h2>添付ファイル追加登録結果</h2>
+  layout:decorate="~{layout/UC01_AccLayout}"
+>
+  <head>
+    <title>添付ファイル追加登録結果</title>
+  </head>
+  <body>
+    <div class="container" layout:fragment="contents">
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12">
+            <h2>添付ファイル追加登録結果</h2>
+          </div>
         </div>
       </div>
-    </div><!-- screen-title -->
+      <!-- screen-title -->
 
-    <div class="middle-area">
-      <div class="row justify-content-center">
-        <table>
-          <tr align="center">
-            <td align="center">
-              <div th:text="'案件名称 ：' + ${projectInfo.projectName}" ></div><br/>
-              に添付ファイルを追加しました。
-              <br><br>
-            </td>
-          </tr>
-<!-- 2023.03.31 R04年度改良_技術資料等アップロードシステムの使用方法補助表示 add start -->
-          <tr align="center">
-            <td align="left">
-              <span class="indentback red bold">
-                ※現時点では申請書の提出は完了していません。<br/>　電子入札システムに戻り、申請書の提出を必ず実施してください。
-              </span><br/>
-                ※全ての添付ファイルを追加後、提出済添付ファイル一覧で登録結果データをダウンロードし、<br/>　電子入札システムの申請書提出時に添付して下さい。
-              <br><br>
-            </td>
-          </tr>
-<!-- 2023.03.31 R04年度改良_技術資料等アップロードシステムの使用方法補助表示 add end -->
-          <tr align="center">
-            <td align="center">
-              <input type="button" name="" value="追加登録" class="button_m"
-              th:onClick="'location.href=\'' + @{'/attachmentFiles/entry'}  + '\''"/>
-              <input type="button" name="" value="提出済添付ファイル一覧" class="button_l"
-              th:onClick="'location.href=\'' + @{'/attachmentFiles'} + '\''"/>
-            </td>
-          </tr>
-        </table>
+      <div class="middle-area">
+        <div class="row justify-content-center">
+          <table>
+            <tr align="center">
+              <td align="center">
+                <div th:text="'案件名称 ：' + ${projectInfo.projectName}"></div>
+                <br />
+                に添付ファイルを追加しました。
+                <br /><br />
+              </td>
+            </tr>
+            <!-- 2023.03.31 R04年度改良_技術資料等アップロードシステムの使用方法補助表示 add start -->
+            <tr align="center">
+              <td align="left">
+                <span class="indentback red bold">
+                  ※現時点では申請書の提出は完了していません。<br />　電子入札システムに戻り、申請書の提出を必ず実施してください。 </span
+                ><br />
+                ※全ての添付ファイルを追加後、提出済添付ファイル一覧で登録結果データをダウンロードし、<br />　電子入札システムの申請書提出時に添付して下さい。
+                <br /><br />
+              </td>
+            </tr>
+            <!-- 2023.03.31 R04年度改良_技術資料等アップロードシステムの使用方法補助表示 add end -->
+            <tr align="center">
+              <td align="center">
+                <input
+                  type="button"
+                  name=""
+                  value="追加登録"
+                  class="button_m"
+                  th:onClick="'location.href=\'' + @{'/attachmentFiles/entry'}  + '\''"
+                />
+                <input
+                  type="button"
+                  name=""
+                  value="提出済添付ファイル一覧"
+                  class="button_l"
+                  th:onClick="'location.href=\'' + @{'/attachmentFiles'} + '\''"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
-    </div><!-- middle-area -->
-  </div>
-</body>
+      <!-- middle-area -->
+    </div>
+  </body>
 </html>

@@ -10,115 +10,162 @@
  //******************************************************
 */-->
 <!DOCTYPE html>
-<html lang="ja"
+<html
+  lang="ja"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layout/UC01_OrdLayout}">
-<head>
-  <title>参加業者一覧</title>
-</head>
-<body>
-  <div class="container" layout:fragment="contents">
-
-    <div class="breadcrumbs">
-      <div class="row">
-        <div class="col-12">
-          <ul>
-            <li th:if="${#authentication.principal.screenTransitionFlag}">
-              <a th:href="@{'/projects/condition'}">調達案件検索の表示</a>
-            </li>
-            <li th:if="${#authentication.principal.screenTransitionFlag}">
-              <a th:href="@{'/projects'(page=${projectPageNo})}">調達案件一覧の表示</a>
-            </li>
-            <li>参加業者一覧</li>
-          </ul>
-        </div>
-      </div>
-    </div><!-- breadcrumbs -->
-
-    <div class="screen-title">
-      <div class="row">
-        <div class="col-12">
-          <h2>参加業者一覧</h2>
-        </div>
-      </div>
-    </div><!-- screen-title -->
-
-    <div class="top-area">
-      <div class="row">
-        <div class="col-lg-6">
-          <table class="table">
-            <tr>
-              <th>調達案件番号</th>
-              <td th:text="${project.projectNo}"></td>
-            </tr>
-            <tr>
-              <th>調達案件名称</th>
-              <td>
-                <a th:text="${project.projectName}" href="#" th:onClick="openProjectDetailWin([[@{'/projects/'} + ${project.projectNo }]])"></a>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div><!-- top-area -->
-
-    <div class="middle-area">
-      <div class="row justify-content-sm-center">
-        <div class="col-8 align-left alert-message">
-          <p class="indentback">
-            ※この一覧には、アップロードシステムを使用せずに資料を提出した業者は表示されません。<br/>
-            紙入札で参加した業者も表示されません。
-          </p>
-        </div>
-      </div>
-    </div><!-- middle-area -->
-
-    <div class="bottom-area">
-      <div class="row list-controll">
-        <div class="col-12 align-right">
-          <div class="btn-group">
-            <input class="btn" type="button" value="前ページ" th:disabled="${page.first}"
-              th:onClick="${not page.first} ? 'location.href=\'' + @{'/accepters'(page=${page.number -1}, projectNo=${project.projectNo})} + '\'' : ''" />
-            <input class="btn" type="button" value="再表示"
-              th:onClick="'location.href=\'' + @{'/accepters'(page=${page.number}, projectNo=${project.projectNo})} + '\''" />
-            <input class="btn" type="button" value="次ページ" th:disabled="${page.last}"
-              th:onClick="${not page.last} ? 'location.href=\'' + @{'/accepters'(page=${page.number +1}, projectNo=${project.projectNo})} + '\'' : ''" />
+  layout:decorate="~{layout/UC01_OrdLayout}"
+>
+  <head>
+    <title>参加業者一覧</title>
+  </head>
+  <body>
+    <div class="container" layout:fragment="contents">
+      <div class="breadcrumbs">
+        <div class="row">
+          <div class="col-12">
+            <ul>
+              <li th:if="${#authentication.principal.screenTransitionFlag}">
+                <a th:href="@{'/projects/condition'}">調達案件検索の表示</a>
+              </li>
+              <li th:if="${#authentication.principal.screenTransitionFlag}">
+                <a th:href="@{'/projects'(page=${projectPageNo})}"
+                  >調達案件一覧の表示</a
+                >
+              </li>
+              <li>参加業者一覧</li>
+            </ul>
           </div>
-          <div class="controll-message">
-            <p th:if="${page.totalElements == 0}" th:text="${page.totalElements} + '件です。'" ></p>
-            <p th:if="${page.totalElements > 0}"
-              th:text="'全' + ${page.totalElements} + '件中、' + (${page.number} * ${page.size} + 1)  + '-' + (${page.last} ? ${page.totalElements} :(${page.number + 1}) * ${page.size}) +  '件を表示しています。'" >
+        </div>
+      </div>
+      <!-- breadcrumbs -->
+
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12">
+            <h2>参加業者一覧</h2>
+          </div>
+        </div>
+      </div>
+      <!-- screen-title -->
+
+      <div class="top-area">
+        <div class="row">
+          <div class="col-lg-6">
+            <table class="table">
+              <tr>
+                <th>調達案件番号</th>
+                <td th:text="${project.projectNo}"></td>
+              </tr>
+              <tr>
+                <th>調達案件名称</th>
+                <td>
+                  <a
+                    th:text="${project.projectName}"
+                    href="#"
+                    th:onClick="openProjectDetailWin([[@{'/projects/'} + ${project.projectNo }]])"
+                  ></a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- top-area -->
+
+      <div class="middle-area">
+        <div class="row justify-content-sm-center">
+          <div class="col-8 align-left alert-message">
+            <p class="indentback">
+              ※この一覧には、アップロードシステムを使用せずに資料を提出した業者は表示されません。<br />
+              紙入札で参加した業者も表示されません。
             </p>
-            <p th:text="最終更新日時： + ${#dates.format(new java.util.Date(),'yyyy/MM/dd HH:mm:ss')}"></p>
           </div>
         </div>
-      </div><!-- list-controll -->
+      </div>
+      <!-- middle-area -->
 
-      <div class="row result-list">
-        <div class="col-12">
-          <table>
-            <tr>
-              <th width="5%">No.</th>
-              <th width="20%">業者番号</th>
-              <th width="47%">業者名称</th>
-              <th width="20%">最終提出日時</th>
-              <th width="8%">備考</th>
-            </tr>
-            <tr th:each="accepterForm : ${page.getContent()}" th:object="${accepterForm}" th:class="${accepterForm.getRemarks()} != null ? 'disabled':'' ">
-              <td th:text="${accepterFormStat.count} + ${page.number} * ${page.size}"></td>
-              <td class="align-left" th:text="*{accepterNo}"></td>
-              <td class="align-left">
-                <a th:href="@{'/attachmentFiles'(accepterNo=*{accepterNo}, projectNo=${project.projectNo})}" th:text="*{accepterName}"></a>
-              </td>
-              <td class="align-left" th:text="*{lastPresentedAt}"></td>
-              <td class="align-left" th:text="${accepterForm.getRemarks()}"></td>
-            </tr>
-          </table>
+      <div class="bottom-area">
+        <div class="row list-controll">
+          <div class="col-12 align-right">
+            <div class="btn-group">
+              <input
+                class="btn"
+                type="button"
+                value="前ページ"
+                th:disabled="${page.first}"
+                th:onClick="${not page.first} ? 'location.href=\'' + @{'/accepters'(page=${page.number -1}, projectNo=${project.projectNo})} + '\'' : ''"
+              />
+              <input
+                class="btn"
+                type="button"
+                value="再表示"
+                th:onClick="'location.href=\'' + @{'/accepters'(page=${page.number}, projectNo=${project.projectNo})} + '\''"
+              />
+              <input
+                class="btn"
+                type="button"
+                value="次ページ"
+                th:disabled="${page.last}"
+                th:onClick="${not page.last} ? 'location.href=\'' + @{'/accepters'(page=${page.number +1}, projectNo=${project.projectNo})} + '\'' : ''"
+              />
+            </div>
+            <div class="controll-message">
+              <p
+                th:if="${page.totalElements == 0}"
+                th:text="${page.totalElements} + '件です。'"
+              ></p>
+              <p
+                th:if="${page.totalElements > 0}"
+                th:text="'全' + ${page.totalElements} + '件中、' + (${page.number} * ${page.size} + 1)  + '-' + (${page.last} ? ${page.totalElements} :(${page.number + 1}) * ${page.size}) +  '件を表示しています。'"
+              ></p>
+              <p
+                th:text="最終更新日時： + ${#dates.format(new java.util.Date(),'yyyy/MM/dd HH:mm:ss')}"
+              ></p>
+            </div>
+          </div>
         </div>
-      </div><!-- result-list -->
-    </div><!-- bottom-area -->
-  </div><!-- container -->
-</body>
+        <!-- list-controll -->
+
+        <div class="row result-list">
+          <div class="col-12">
+            <table>
+              <tr>
+                <th width="5%">No.</th>
+                <th width="20%">業者番号</th>
+                <th width="47%">業者名称</th>
+                <th width="20%">最終提出日時</th>
+                <th width="8%">備考</th>
+              </tr>
+              <tr
+                th:each="accepterForm : ${page.getContent()}"
+                th:object="${accepterForm}"
+                th:class="${accepterForm.getRemarks()} != null ? 'disabled':'' "
+              >
+                <td
+                  th:text="${accepterFormStat.count} + ${page.number} * ${page.size}"
+                ></td>
+                <td class="align-left" th:text="*{accepterNo}"></td>
+                <td class="align-left">
+                  <a
+                    th:href="@{'/attachmentFiles'(accepterNo=*{accepterNo}, projectNo=${project.projectNo})}"
+                    th:text="*{accepterName}"
+                  ></a>
+                </td>
+                <td class="align-left" th:text="*{lastPresentedAt}"></td>
+                <td
+                  class="align-left"
+                  th:text="${accepterForm.getRemarks()}"
+                ></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- result-list -->
+      </div>
+      <!-- bottom-area -->
+    </div>
+    <!-- container -->
+  </body>
 </html>

@@ -10,38 +10,51 @@
  //******************************************************
 */-->
 <!DOCTYPE html>
-<html lang="ja"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/UC01_OrdLayout}">
-<head>
-  <title>トップメニュー</title>
-</head>
-<body>
-  <div class="container" layout:fragment="contents">
-    <div class="screen-title">
-      <div class="row">
-        <div class="col-12">
-          <h2>トップメニュー</h2>
+<html
+  lang="ja"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/UC01_OrdLayout}"
+>
+  <head>
+    <title>トップメニュー</title>
+  </head>
+  <body>
+    <div class="container" layout:fragment="contents">
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12">
+            <h2>トップメニュー</h2>
+          </div>
         </div>
       </div>
-    </div><!-- screen-title -->
+      <!-- screen-title -->
 
-    <div class="bottom-area">
-      <div class="row">
-        <div class="col-12 align-center">
-          <ul class="menu-list">
-            <li class="menu"><a th:href="@{'/projects/condition'}">案件一覧表示</a></li>
-            <li class="menu yellow" th:if="${#authentication.principal.authorityType == '0'}">
-              <a th:href="@{'/password'}">パスワード変更</a>
-            </li>
-            <li class="menu pink" th:if="${#authentication.principal.authorityType == '1'}">
-              <a th:href="@{'/users'}">利用者情報管理</a>
-            </li>
-          </ul>
+      <div class="bottom-area">
+        <div class="row">
+          <div class="col-12 align-center">
+            <ul class="menu-list">
+              <li class="menu">
+                <a th:href="@{'/projects/condition'}">案件一覧表示</a>
+              </li>
+              <li
+                class="menu yellow"
+                th:if="${#authentication.principal.authorityType == '0'}"
+              >
+                <a th:href="@{'/password'}">パスワード変更</a>
+              </li>
+              <li
+                class="menu pink"
+                th:if="${#authentication.principal.authorityType == '1'}"
+              >
+                <a th:href="@{'/users'}">利用者情報管理</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div><!-- bottom-area -->
-  </div>
-</body>
+      <!-- bottom-area -->
+    </div>
+  </body>
+</html>

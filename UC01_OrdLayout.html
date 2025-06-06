@@ -10,27 +10,48 @@
  //******************************************************
 */-->
 <!DOCTYPE html>
-<html lang="ja"
+<html
+  lang="ja"
   xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta http-equiv="Pragma" content="no-cache"/>
-  <meta http-equiv="Cache-Control" content="no-cache"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-  <title>技術資料等アップロードシステム</title>
-  <link rel="stylesheet" type="text/css" href="../../../static/css/bootstrap-reboot.min.css" th:href="@{/css/bootstrap-reboot.min.css}"/>
-  <link rel="stylesheet" type="text/css" href="../../../static/css/bootstrap-grid.min.css" th:href="@{/css/bootstrap-grid.min.css}"/>
-  <link rel="stylesheet" type="text/css" href="../../../static/css/upsystem.css" th:href="@{/css/upsystem.css}"/>
-  <script src="../../../static/js/common.js" th:src="@{/js/common.js}"></script>
-</head>
-<body>
-  <header class="header" layout:replace="~{common/UC01_OrdHeader::header}">
-  </header>
-  <main class="main">
-    <div class="container" layout:fragment="contents">
-    </div>
-  </main>
-</body>
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>技術資料等アップロードシステム</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../static/css/bootstrap-reboot.min.css"
+      th:href="@{/css/bootstrap-reboot.min.css}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../static/css/bootstrap-grid.min.css"
+      th:href="@{/css/bootstrap-grid.min.css}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../static/css/upsystem.css"
+      th:href="@{/css/upsystem.css}"
+    />
+    <script
+      src="../../../static/js/common.js"
+      th:src="@{/js/common.js}"
+    ></script>
+  </head>
+  <body>
+    <header
+      class="header"
+      layout:replace="~{common/UC01_OrdHeader::header}"
+    ></header>
+    <main class="main">
+      <div class="container" layout:fragment="contents"></div>
+    </main>
+  </body>
 </html>
