@@ -1,0 +1,75 @@
+<!--/*
+ //******************************************************
+ // システム名 電子入札コアシステム
+ // サブシステム名 アップロードシステム
+ //
+ // 案件詳細（UC03_ProjectDetail.html）
+ // @author  NEC
+ // @version 1.0, xxxx.xx.xx, 新規作成
+ //
+ //******************************************************
+*/-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Cache-Control" content="no-cache"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>案件詳細表示</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-reboot.min.css" th:href="@{/css/bootstrap-reboot.min.css}"/>
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-grid.min.css" th:href="@{/css/bootstrap-grid.min.css}"/>
+  <link rel="stylesheet" type="text/css" href="../static/css/upsystem.css" th:href="@{/css/upsystem.css}"/>
+</head>
+<body>
+
+  <header>
+    <div class="row"></div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12">
+            <h2>案件詳細表示</h2>
+          </div>
+        </div>
+      </div><!-- screen-title -->
+
+      <div class="top-area">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <table class="project-detail">
+              <tr><th>調達機関名</th><td th:text="${projectDetail.organName}"></td></tr>
+              <tr><th>部局名</th><td th:text="${projectDetail.departmentName}"></td></tr>
+              <tr><th>契約担当事務所名</th><td th:text="${projectDetail.contractOfficeName}"></td></tr>
+              <tr><th>調達案件名</th><td th:text="${projectDetail.projectName}"></td></tr>
+              <tr><th>品目分類</th><td th:text="${projectDetail.itemsClassificationName}"></td></tr>
+              <tr><th>工事種別／業務区分</th><td th:text="${projectDetail.constructionName}"></td></tr>
+              <tr><th>入札方式</th><td th:text="${projectDetail.bidMethodName}"></td></tr>
+              <tr>
+                <th>工事または業務内容</th>
+                <td>
+                  <!--/* 改行をbrタグに変換して表示する */-->
+                  <th:block th:if="${projectDetail.projectOutline}">
+                    <th:block th:each="str, stat : ${projectDetail.projectOutline.split('\r\n|\r|\n', -1)}">
+                      <th:block th:text="${str}"/><br th:if="${!stat.last}" />
+                    </th:block>
+                  </th:block>
+                </td>
+              </tr>
+              <tr><th>公告日／公示日等</th><td th:text="${projectDetail.publicDateWareki}"></td></tr>
+              <tr><th>開札予定日</th><td th:text="${projectDetail.bidOpenedTimeWareki}"></td></tr>
+              <tr><th>工事（業務）担当事務所名</th><td th:text="${projectDetail.officeName}"></td></tr>
+            </table>
+          </div>
+        </div>
+      </div><!-- top-area -->
+
+    </div>
+  </main>
+</body>
+</html>

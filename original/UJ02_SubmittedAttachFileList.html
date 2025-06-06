@@ -1,0 +1,218 @@
+<!--/*
+ //******************************************************
+ // システム名 電子入札コアシステム
+ // サブシステム名 アップロードシステム
+ //
+ // 提出済添付ファイル一覧（UJ02_SubmittedAttachFileList.html）
+ // @author  NEC
+ // @version 1.0, xxxx.xx.xx, 新規作成
+ // @version 2.0, 2021.06.01, 運用監理_コアシステム新ブラウザ対応
+ // @version 3.0, 2023.03.31, R04年度改良_技術資料等アップロードシステムの使用方法補助表示
+ //
+ //******************************************************
+*/-->
+<!DOCTYPE html>
+<html lang="ja"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/UC01_AccLayout}">
+<head>
+  <title>提出済添付ファイル一覧</title>
+<script th:inline="javascript">
+var list = /*[[${page.getContent()}]]*/ null;  //提出済み添付ファイルのリスト
+
+//初期処理
+function initScreen(){
+  //提出済み添付ファイル一覧画面が起点であることの設定
+  window.sessionStorage.setItem(['fromUJ0201'],['true']);
+  //提出済み添付ファイルリストが null の場合、即終了
+  if(list == null) return;
+
+  //「サイズ」表示
+  for(i=0;i < list.length;i++){
+    var size = convertFileSizeForDisp(list[i].fileSize);
+    var obj = document.getElementById('fileSize'+i);
+    obj.textContent = size + " MB";
+  }
+}
+
+//メッセージエリアクリア
+function clearError(){
+  //メッセージタグをすべて削除
+  removeElementById('message');
+}
+
+//ファイルダウンロード
+function downloadFile() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "./dat/touroku.dat", true);
+  xhr.responseType = "blob";
+
+  xhr.onload = function (event) {
+    // ダウンロード完了後の処理
+    var blob = xhr.response;
+/* 2021.06.01 運用監理_コアシステム新ブラウザ対応 edit start */
+    //window.navigator.msSaveOrOpenBlob(blob, "touroku.dat");
+    if(navigator.userAgent.indexOf('Trident')!=-1){
+      //ブラウザがIEの場合
+      window.navigator.msSaveOrOpenBlob(blob, "touroku.dat");
+    }else{
+      //ブラウザがIE以外の場合
+      const url = URL.createObjectURL(blob);
+      const obj = document.createElement("a");
+      document.body.appendChild(obj);
+      obj.download = 'touroku.dat';
+      obj.href = url;
+      obj.click();
+      obj.remove();
+      URL.revokeObjectURL(url);
+    }
+/* 2021.06.01 運用監理_コアシステム新ブラウザ対応 edit end */
+  };
+
+  // XMLHttpRequestオブジェクトの通信開始
+  xhr.send();
+  //メッセージエリアをクリア
+  clearError();
+}
+
+</script>
+</head>
+<body onload="initScreen()">
+  <div class="container" layout:fragment="contents">
+    <div class="screen-title">
+      <div class="row">
+        <div class="col-12">
+          <h2>提出済添付ファイル一覧</h2>
+        </div>
+      </div>
+    </div><!-- screen-title -->
+
+    <div class="top-area">
+      <div class="row">
+        <div class="col-lg-6">
+          <table>
+            <tr><th>調達案件番号</th><td th:text="${baseinfo.projectNo}"></td></tr>
+            <tr><th>調達案件名称</th>
+              <td>
+                <a th:text="${baseinfo.projectName}" href="#" th:onClick="openProjectDetailWin([[@{'/projects/'} + ${baseinfo.projectNo }]])"></a>
+              </td>
+            </tr>
+            <tr><th>対象申請書種別</th><td th:text="${baseinfo.applicationFormName}"></td></tr>
+            <tr><th>対象資料種別</th><td th:text="${baseinfo.documentTypeName}"></td></tr>
+          </table>
+        </div>
+      </div>
+    </div><!-- top-area -->
+
+    <div class="middle-area">
+      <div class="row justify-content-center">
+        <div class="col-5">
+          <div th:if="${#authentication.principal.applicationStatus.equals('0')}">
+            <div th:if="${#authentication.principal.screenID.equals('UJ0201')}">
+            <input type="button" name="" value="添付ファイル追加" class="btn btn-block" disabled/>
+            </div>
+            <div th:unless="${#authentication.principal.screenID.equals('UJ0201')}">
+              <input type="button" name="" value="添付ファイル追加" class="btn btn-block" th:onClick="'location.href=\'' + @{'/attachmentFiles/entry'} + '\''"/>
+            </div>
+          </div>
+          <div th:if="${#authentication.principal.applicationStatus.equals('1')}">
+            <input type="button" name="" value="添付ファイル追加" class="btn btn-block" disabled/>
+          </div>
+        </div>
+        <div class="col-5">
+          <div th:if="${#authentication.principal.applicationStatus.equals('0')}">
+            <input type="button" name="" value="登録結果データのダウンロード" class="btn btn-block" th:disabled="${page.totalElements == 0} ? true:false"
+              th:onClick="downloadFile()" />
+          </div>
+          <div th:if="${#authentication.principal.applicationStatus.equals('1')}">
+            <input type="button" name="" value="登録結果データのダウンロード" class="btn btn-block" disabled/>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8 align-left alert-message">
+<!-- 2023.03.31 R04年度改良_技術資料等アップロードシステムの使用方法補助表示 add start -->
+          <div th:if="${#authentication.principal.applicationStatus.equals('0')}">
+            <p class="indentback red bold">
+              ※現時点では申請書の提出は完了していません。<br/>電子入札システムに戻り、申請書の提出を必ず実施してください。
+            </p>
+<!-- 2023.03.31 R04年度改良_技術資料等アップロードシステムの使用方法補助表示 add end -->
+            <p class="indentback">
+              ※<span class="yellow-underline">全ての添付ファイルを追加後、登録結果データをダウンロードし、<br/>電子入札システムの申請書提出時に添付して下さい。</span>
+            </p>
+<!-- 2023.03.31 R04年度改良_技術資料等アップロードシステムの使用方法補助表示 add start -->
+          </div>
+<!-- 2023.03.31 R04年度改良_技術資料等アップロードシステムの使用方法補助表示 add end -->
+          <p class="indentback red bold">
+            ※電子入札システムで申請書を提出した後は、ファイル追加ができません。
+          </p>
+        </div>
+      </div>
+      <div th:if="${message != null}" class="error" id="message">
+        <ul>
+          <li th:if="${message.message != null}" th:text="${message.message}"></li>
+        </ul>
+        <ul th:if="${message.subInfoList != null}" style="list-style-type:none">
+          <li th:each="subInfo : ${message.subInfoList}" th:text="${subInfo}"></li>
+        </ul>
+      </div>
+    </div><!-- middle-area -->
+
+    <div class="bottom-area">
+      <div class="row list-controll">
+        <div class="col-12 align-right">
+          <div class="btn-group">
+            <input type="button" value="前ページ" th:disabled="${page.first} ? 'true':'false'" class="btn"
+              th:onClick="${not page.first} ? 'location.href=\'' + @{'/attachmentFiles'(page=${page.number -1})} + '\'' : ''" />
+
+            <input type="button" name="" value="再表示" class="btn"
+              th:onClick="'location.href=\'' + @{'/attachmentFiles'(page=0)} + '\''" />
+
+            <input type="button" value="次ページ" th:disabled="${page.last} ? true:false" class="btn"
+              th:onClick="${not page.last} ? 'location.href=\'' + @{'/attachmentFiles'(page=${page.number +1})} + '\'' : ''" />
+          </div>
+          <div class="controll-message">
+            <div th:if="${page.totalElements == 0}" align="right"
+              th:text="${page.totalElements} + '件です。'" ></div>
+            <div th:if="${page.totalElements > 0}" align="right"
+              th:text="'全' + ${page.totalElements} + '件中、' + (${page.number} * ${page.size} + 1)  + '-' + (${page.last} ? ${page.totalElements} :(${page.number + 1}) * ${page.size}) +  '件を表示しています。'" ></div>
+            <div th:text="最終更新日時： + ${#dates.format(new java.util.Date(),'yyyy/MM/dd HH:mm:ss')}"></div>
+          </div>
+        </div>
+      </div><!-- list-controll -->
+
+      <div class="row result-list">
+        <div class="col-12">
+          <table>
+            <tr>
+              <th width="5%">No.</th>
+              <th width="20%">申請書種別</th>
+              <th width="15%">資料種別</th>
+              <th width="30%">ファイル名称</th>
+              <th width="10%">サイズ</th>
+              <th width="20%">提出日時</th>
+            </tr>
+
+            <tr th:each="attachFiles:${page.getContent()}">
+              <td class="align-center" th:text="${page.number * page.size + attachFilesStat.count}"></td>
+              <td class="align-left" th:text="${attachFiles.applicationFormName}">
+              <td class="align-left" th:text="${attachFiles.documentTypeName}"></td>
+              <td class="align-left">
+                <div th:if="${attachFiles.deletedStatus == '0'}">
+                  <a th:id="'fileName' + ${attachFilesStat.index}" th:text="${attachFiles.fileName}" th:href="@{'/attachmentFiles/' + ${attachFiles.attachedDocumentNo} + '/download'(page=${page.number})}" th:onClick="'clearError()'"></a>
+                </div>
+                <div th:if="${attachFiles.deletedStatus != '0'}" align="left" th:text="${attachFiles.fileName}"></div>
+              </td>
+              <td class="align-right">
+                <div th:id="'fileSize' + ${attachFilesStat.index}"> </div>
+              </td>
+              <td class="align-left" th:text="${#dates.format(attachFiles.presentedAt, 'yyyy/MM/dd HH:mm:ss')}"></td>
+            </tr>
+          </table>
+        </div>
+      </div><!-- result-list -->
+    </div><!-- bottom-area -->
+  </div>
+</body>
+</html>
