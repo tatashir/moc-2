@@ -1,0 +1,410 @@
+@charset "utf-8";
+/**
+ * 技術資料等アップロードシステムCSS
+ *
+ * @author NEC
+ * @version 1.0, xxxx.xx.xx, 新規作成
+ * @version 2.0, 2021.06.01, 運用監理_コアシステム新ブラウザ対応
+ */
+
+/********** global settings *********/
+body {
+  font-family: "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", Helvetica,
+    Arial, sans-serif;
+  background-color: #f0f0ff;
+}
+
+a {
+  text-decoration: underline;
+}
+
+p.indentback {
+  text-indent: -1em;
+  padding-left: 2em;
+}
+
+.row {
+  margin-bottom: 1.2rem;
+}
+
+/**********  header *********/
+.header .row {
+  background-color: rgb(187, 221, 255);
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.logo {
+  height: 3rem;
+}
+
+.logo > h1 {
+  font-size: 1.3rem;
+  margin: 0 0 0 1rem;
+}
+
+.tools {
+  height: 3rem;
+  margin: 0 1rem 0 0;
+}
+
+.tools a {
+  margin-right: 1rem;
+}
+
+/********** main *********/
+.main {
+  text-align: center;
+}
+
+/********** screen-title *********/
+.screen-title h2 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+/********** top-area *********/
+.top-area table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 1px;
+  table-layout: fixed;
+}
+
+.top-area table th {
+  background-color: rgb(255, 255, 204);
+  text-align: right;
+  padding: 0.3rem;
+  width: 10rem;
+}
+
+.top-area table td {
+  background-color: #fff;
+  text-align: left;
+  padding: 0.3rem;
+  word-break: break-all;
+}
+
+/********** middle-area *********/
+.middle-area {
+  margin: 3rem 0 3rem 0;
+}
+
+.alert-message p {
+  margin: 0;
+}
+
+/********** bottom-area *********/
+/********** list-controll *********/
+.list-controll .btn-group {
+  margin-bottom: 1rem;
+}
+.list-controll .controll-message p {
+  margin: 0;
+}
+
+/********** result-list *********/
+.result-list table {
+  width: 100%;
+  table-layout: fixed;
+  border: 1px solid;
+}
+
+.result-list table tr {
+  background-color: white;
+}
+
+.result-list table tr.disabled {
+  background-color: #ccc;
+}
+
+.result-list table th {
+  border: 1px solid;
+  padding: 0.2rem;
+  word-break: break-all;
+  background-color: #ffffcc;
+}
+
+.result-list table td {
+  border: 1px solid;
+  padding: 0.2rem;
+  word-break: break-all;
+}
+
+.result-list input[type="file"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.result-list .controll {
+  width: 4.5rem;
+}
+
+/********** form-table *********/
+table.form-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 1px;
+  table-layout: fixed;
+}
+
+table.form-table th {
+  background-color: rgb(255, 255, 204);
+  text-align: right;
+  padding: 0.3rem;
+  width: 12rem;
+}
+
+table.form-table td {
+  background-color: #fff;
+  text-align: left;
+  padding: 0.3rem;
+  word-break: break-all;
+}
+
+table.form-table input[type="text"] {
+  box-sizing: border-box;
+  width: 80%;
+}
+
+table.form-table input[type="password"] {
+  box-sizing: border-box;
+  width: 80%;
+}
+
+table.form-table td.example {
+  width: 15rem;
+  background-color: transparent;
+}
+
+/********** user-form *********/
+.user-form table.form-table input[type="text"] {
+  width: 100%;
+}
+
+.user-form table.form-table input[type="password"] {
+  width: 100%;
+}
+
+.user-form table.form-table th {
+  width: 13rem;
+}
+
+.user-form label {
+  font-weight: bold;
+  margin: 0 1rem 0 0.2rem;
+}
+
+/********** login-form *********/
+.login-form table.form-table input[type="text"] {
+  width: 100%;
+}
+
+.login-form table.form-table input[type="password"] {
+  width: 100%;
+}
+
+.login-form table.form-table th {
+  width: 10rem;
+}
+
+/********** information *********/
+.information textarea {
+  width: 100%;
+  height: 13rem;
+  /* 2021.06.01 運用監理_コアシステム新ブラウザ対応 add start */
+  resize: none;
+  /* 2021.06.01 運用監理_コアシステム新ブラウザ対応 add end */
+  margin-bottom: 1.2rem;
+}
+
+.information hr {
+  margin-bottom: 1.2rem;
+}
+
+/********** password-form *********/
+.password-form table.form-table input[type="password"] {
+  width: 100%;
+}
+
+.password-form table.form-table th {
+  width: 15rem;
+}
+
+/********** button *********/
+input.btn,
+a.btn {
+  font-size: 1rem;
+  padding: 0.2rem 1rem;
+  border: 1px solid #336699;
+  background: #fff;
+  color: #000;
+  white-space: normal;
+  text-decoration: none;
+}
+
+input.btn:hover,
+a.btn:hover {
+  border-color: #336699;
+  background: #eff;
+  color: #000;
+}
+
+input.btn:active,
+a.btn:active {
+  border-color: #336699;
+  background: #cff;
+  color: #000;
+}
+
+input.btn:disabled,
+a.btn:disabled {
+  border-color: #336699;
+  background: #eee;
+  color: #999;
+}
+
+input.btn-block,
+a.btn-block {
+  width: 100%;
+  margin: 0.2rem;
+}
+
+input.btn-sm,
+a.btn-sm {
+  font-size: 0.8rem;
+  height: 1.6rem;
+  padding: 0 1rem;
+}
+
+/********** date-input *********/
+.between-date-input div:first-child {
+  margin-bottom: 0.1rem;
+}
+
+/********** error *********/
+.error ul {
+  color: red;
+  list-style-position: inside;
+}
+
+/********** breadcrumbs *********/
+.breadcrumbs {
+  text-align: left;
+}
+
+.breadcrumbs .row {
+  border-bottom: solid 1px gray;
+}
+
+.breadcrumbs ul {
+  margin: 0.2rem 0;
+  padding: 0;
+}
+
+.breadcrumbs li {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.breadcrumbs li:first-child::before {
+  content: "\5B\a0";
+}
+
+.breadcrumbs li:nth-child(n + 2)::before {
+  content: "\FF1E\a0\5B\a0";
+}
+
+.breadcrumbs li::after {
+  content: "\a0\5D\a0";
+}
+
+/********** menu-list *********/
+ul.menu-list {
+  margin: 2rem 0;
+  padding: 0;
+}
+
+ul.menu-list li.menu {
+  list-style: none;
+}
+
+ul.menu-list li.menu a {
+  display: inline-block;
+  width: 18rem;
+  padding: 0.2rem 2rem;
+  text-decoration: none;
+  border: outset 3px #ccff99;
+  background-color: #bbddff;
+  color: #000;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+ul.menu-list li.menu a:hover {
+  border: inset 3px #1e7fe0;
+  background-color: #65b2ff;
+}
+
+ul.menu-list li.yellow a {
+  border: outset 3px #ffe599;
+  background-color: #ffff99;
+}
+
+ul.menu-list li.yellow a:hover {
+  border: inset 3px #ffcc99;
+  background-color: #dab957;
+}
+
+ul.menu-list li.pink a {
+  border: outset 3px #efcca8;
+  background-color: #f2d8f2;
+}
+
+ul.menu-list li.pink a:hover {
+  border: inset 3px #eadbad;
+  background-color: #eaadbc;
+}
+
+/********** project-detail *********/
+table.project-detail th {
+  width: 40%;
+}
+
+/********** general *********/
+.yellow-underline {
+  border-bottom: solid 2px yellow;
+}
+
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.vertical-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vertical-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
