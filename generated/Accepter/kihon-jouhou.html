@@ -148,12 +148,207 @@
                     </td>
                   </tr>
                   <tr>
-                    <th>権限</th>
+                    <th>有無</th>
                     <td>
                       <input type="checkbox" />
-                      <b>評価型A</b>
+                      <b>有</b>
                       <input type="checkbox" />
-                      <b>評価型B</b>
+                      <b>無</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>セレクトボックス</th>
+                    <td>
+                      <select>
+                        <option value="1">
+                          選択肢の文字数によってセレクトボックスの幅が決まる
+                        </option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      コリンズに記載されていない同種の工事（加算点）の項目・数量等の記載（長い項目名プレビュー）
+                    </th>
+                    <td>
+                      <textarea
+                        style="width: 100%"
+                        rows="3"
+                        placeholder="rows=3"
+                      ></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>テキスト（1行）とボタン</th>
+                    <td>
+                      <input type="text" />
+                      <button type="button">ボタン</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>date</th>
+                    <td>
+                      <input type="date" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>period</th>
+                    <td>
+                      <input type="date" />
+                      <span>～</span>
+                      <input type="date" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>****円</th>
+                    <td>
+                      <input type="text" />
+                      <span>円</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>チェックボックス複数</th>
+                    <td>
+                      <input type="checkbox" />
+                      <b>選択肢1</b>
+                      <input type="checkbox" />
+                      <b> 選択肢2</b>
+                      <input type="checkbox" />
+                      <b>選択肢3</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      添付ファイル（ファイル名、input、サイズ、削除ボタン）
+                    </th>
+                    <td>
+                      <table class="file-upload" style="width: 100%">
+                        <tr>
+                          <th
+                            style="
+                              width: 30%;
+                              border: 1px solid #000;
+                              text-align: center;
+                            "
+                          >
+                            <span>添付資料</span>
+                          </th>
+                          <th
+                            style="
+                              width: 40%;
+                              border: 1px solid #000;
+                              text-align: center;
+                            "
+                          >
+                            <span>ファイル名</span>
+                          </th>
+                          <th
+                            style="
+                              width: 15%;
+                              border: 1px solid #000;
+                              text-align: center;
+                            "
+                          >
+                            <span>サイズ</span>
+                          </th>
+                          <th style="width: 15%; border: 1px solid #000"></th>
+                        </tr>
+                        <tr>
+                          <td style="border: 1px solid #000">ファイル名1</td>
+                          <td style="border: 1px solid #000">
+                            <a href="">ファイル名1.pdf</a>
+                          </td>
+                          <td style="border: 1px solid #000">100KB</td>
+                          <td style="border: 1px solid #000">
+                            <button type="button">削除</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="border: 1px solid #000">ファイル名2</td>
+                          <td style="border: 1px solid #000">
+                            <input type="file" />
+                          </td>
+                          <td style="border: 1px solid #000"></td>
+                          <td style="border: 1px solid #000">
+                            <button type="button" disabled>削除</button>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>2桁数字 + %</th>
+                    <td>
+                      <input type="text" style="width: 50px" />
+                      <span>%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>TEL</th>
+                    <td>
+                      <input
+                        type="tel"
+                        style="width: 60px; display: inline-block"
+                        maxlength="3"
+                      />
+                      -
+                      <input
+                        type="tel"
+                        style="width: 80px; display: inline-block"
+                        maxlength="4"
+                      />
+                      -
+                      <input
+                        type="tel"
+                        style="width: 80px; display: inline-block"
+                        maxlength="4"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>メールアドレス</th>
+                    <td>
+                      <input type="email" style="width: 100%" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>郵便番号</th>
+                    <td>
+                      <input type="text" style="width: 100%" />
+                      <span>（ハイフンなし）</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>受賞企業</th>
+                    <td>
+                      ■国土技術開発省
+                      <div>
+                        <label><input type="checkbox" value="有" />有</label>
+                        <label><input type="checkbox" value="無" />無</label>
+                        <span style="margin-left: 1em"
+                          >受賞年月日:
+                          <input type="date" name="award_kokudo_date"
+                        /></span>
+                      </div>
+                      <hr />
+                      ■コンストラクション大賞
+                      <div>
+                        <label><input type="checkbox" value="有" />有</label>
+                        <label><input type="checkbox" value="無" />無</label>
+                        <span style="margin-left: 1em"
+                          >受賞年月日:
+                          <input type="date" name="award_construction_date"
+                        /></span>
+                      </div>
+                      <hr />
+                      ■その他DX大賞
+                      <div>
+                        <label><input type="checkbox" value="有" />有</label>
+                        <label><input type="checkbox" value="無" />無</label>
+                        <span style="margin-left: 1em"
+                          >受賞年月日: <input type="date" name="award_dx_date"
+                        /></span>
+                      </div>
                     </td>
                   </tr>
                 </table>
@@ -164,8 +359,10 @@
               <div class="col-12 align-center">
                 <!-- <input type="submit" class="btn" value="input" /> -->
                 <a class="btn">確認印刷</a>
+                <a class="btn">既存施工実績の呼出</a>
+                <a class="btn">入力画面の初期化</a>
                 <a class="btn">登録</a>
-                <a class="btn">戻る</a>
+                <a class="btn">メニューに戻る</a>
               </div>
             </div>
           </form>
