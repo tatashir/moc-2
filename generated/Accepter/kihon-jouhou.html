@@ -95,6 +95,23 @@
                       <input style="width: 100%" />
                     </td>
                   </tr>
+                  <tr>
+                    <th>input</th>
+                    <td>
+                      <input style="width: 100%" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>textarea</th>
+                    <td>
+                      <textarea
+                        style="width: 100%"
+                        rows="1"
+                        placeholder="rows=1"
+                        title="ホバーで表示されるテキストエリアの説明"
+                      ></textarea>
+                    </td>
+                  </tr>
                 </table>
               </div>
             </div>
@@ -208,7 +225,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <th>添付ファイル</th>
+                    <th>添付ファイル input使うと崩れる</th>
                     <td>
                       <table class="file-upload" style="width: 100%">
                         <tr>
@@ -246,12 +263,18 @@
                           <td style="border: 1px solid #000">
                             <a href="">ファイル名1.pdf</a>
                           </td>
-                          <td style="border: 1px solid #000">100KB</td>
-                          <td style="border: 1px solid #000">
+                          <td
+                            style="border: 1px solid #000; text-align: center"
+                          >
+                            100KB
+                          </td>
+                          <td
+                            style="border: 1px solid #000; text-align: center"
+                          >
                             <button type="button">削除</button>
                           </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                           <td style="border: 1px solid #000">ファイル名2</td>
                           <td style="border: 1px solid #000">
                             <input type="file" />
@@ -260,7 +283,7 @@
                           <td style="border: 1px solid #000">
                             <button type="button" disabled>削除</button>
                           </td>
-                        </tr>
+                        </tr> -->
                       </table>
                     </td>
                   </tr>
