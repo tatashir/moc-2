@@ -1,0 +1,18 @@
+gijutu-siryou-sentaku
+kihon-jouhou
+dousyu
+    kubun-sentaku
+    kouji-sentaku
+g-sentaku
+    g-sentaku-sikaku
+        g-sentaku-sikaku-sentaku
+    g-sentaku-keiken
+    g-sentaku-juuji
+
+yousiki
+    yousiki-dousyu
+    yousoki-sikaku
+    yousiki-keiken
+    yousiki-juuji
+
+touroku
