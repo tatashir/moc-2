@@ -248,13 +248,13 @@
                     <th>発注年度*</th>
                     <td>
                       <select>
-                        <option>2000</option>
-                        <option>2001</option>
-                        <option>2002</option>
-                        <option>2003</option>
-                        <option>2004</option>
+                        <option>昭和</option>
+                        <option>平成</option>
+                        <option>令和</option>
+                        <option>西暦</option>
                       </select>
-                      年度
+                      <input type="text" style="width: 50px" />
+                      年
                       <p style="color: red; font-size: 0.8em">
                         ※選択されていません。
                       </p>
@@ -288,10 +288,34 @@
                   <tr>
                     <th>工期*</th>
                     <td>
-                      <input type="date" /> から <input type="date" /> まで
-                      <p style="color: red; font-size: 0.8em">
-                        ※入力されていません。
-                      </p>
+                      <div>
+                        <select>
+                          <option>昭和</option>
+                          <option>平成</option>
+                          <option>令和</option>
+                          <option>西暦</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日から
+                      </div>
+                      <div>
+                        <select>
+                          <option>昭和</option>
+                          <option>平成</option>
+                          <option>令和</option>
+                          <option>西暦</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日まで
+                      </div>
                     </td>
                   </tr>
                   <tr>
@@ -684,9 +708,64 @@
                           ※選択されていません。
                         </p>
                       </div>
-                      <div>
-                        <textarea style="width: 100%" rows="4"></textarea>
-                      </div>
+                      <table class="file-upload" style="width: 100%">
+                        <tr>
+                          <th
+                            style="
+                              width: 30%;
+                              border: 1px solid #000;
+                              text-align: center;
+                            "
+                          >
+                            <span>添付資料</span>
+                          </th>
+                          <th
+                            style="
+                              width: 40%;
+                              border: 1px solid #000;
+                              text-align: center;
+                            "
+                          >
+                            <span>ファイル名</span>
+                          </th>
+                          <th
+                            style="
+                              width: 15%;
+                              border: 1px solid #000;
+                              text-align: center;
+                            "
+                          >
+                            <span>サイズ</span>
+                          </th>
+                          <th style="width: 15%; border: 1px solid #000"></th>
+                        </tr>
+                        <tr>
+                          <td style="border: 1px solid #000">ファイル名2</td>
+                          <td style="border: 1px solid #000">
+                            <a href="">ファイル名2.pdf</a>
+                          </td>
+                          <td
+                            style="border: 1px solid #000; text-align: center"
+                          >
+                            100KB
+                          </td>
+                          <td
+                            style="border: 1px solid #000; text-align: center"
+                          >
+                            <button type="button">削除</button>
+                          </td>
+                        </tr>
+                        <!-- <tr>
+                          <td style="border: 1px solid #000">ファイル名2</td>
+                          <td style="border: 1px solid #000">
+                            <input type="file" />
+                          </td>
+                          <td style="border: 1px solid #000"></td>
+                          <td style="border: 1px solid #000">
+                            <button type="button" disabled>削除</button>
+                          </td>
+                        </tr> -->
+                      </table>
                     </td>
                   </tr>
                   <tr>
@@ -710,17 +789,9 @@
                     <th>その他コメント</th>
                     <td>
                       <div>
-                        <input type="checkbox" />
-                        <b>有</b>
-                        <input type="checkbox" />
-                        <b>無</b>
-                        <p style="color: red; font-size: 0.8em">
-                          ※選択されていません。
-                        </p>
-                      </div>
-                      <div>
                         <textarea style="width: 100%" rows="4"></textarea>
                       </div>
+                      <input type="file" />
                     </td>
                   </tr>
                 </table>
@@ -747,7 +818,7 @@
                   <tr class="align-center">
                     <th width="5%">No.</th>
                     <th width="25%">添付資料</th>
-                    <th width="50%"></th>
+                    <th width="50%">ファイル名</th>
                     <th width="10%">サイズ</th>
                     <th width="10%"></th>
                   </tr>
