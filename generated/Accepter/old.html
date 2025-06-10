@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>技術資料等アップロードシステム</title>
+    <link rel="stylesheet" href="../styles/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="../styles/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="../styles/upsystem.css" />
+  </head>
+  <body>
+    <header class="header" layout:fragment="header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="logo vertical-center">
+              <h1>技術資料等アップロードシステム</h1>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!-- <div class="tools vertical-right">
+              <input
+                class="btn"
+                type="button"
+                name=""
+                value="閉じる"
+                onClick="window.close();"
+              />
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container" layout:fragment="contents">
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12 align-center">
+            <h2>配置予定技術者の氏名・資格</h2>
+          </div>
+        </div>
+      </div>
+      <!-- screen-title -->
+
+      <div class="bottom-area">
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h4>配置予定技術者の資格</h4>
+                <table class="form-table">
+                  <tr>
+                    <th>所属会社名</th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        value="XXXXXXXXXX"
+                      /><label>※</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>建築許可番号</th>
+                    <td>
+                      <select style="width: 60%">
+                        <option>国土交通大臣・〇〇県知事</option>
+                      </select>
+                      <label>-</label>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        value="123456"
+                        style="width: 20%"
+                      /><label>※</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>技術者区分</th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        value="XXXXXXXXXX"
+                      /><label>※</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>その他役職名</th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        value="XXXXXXXXXX"
+                      /><label>※</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>氏名</th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        value="XXXXXXXXXX"
+                      /><label>※</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>フリガナ</th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        value="XXXXXXXXXX"
+                      /><label>※</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>生年月日</th>
+                    <td>
+                      <select>
+                        <option>昭和　</option>
+                      </select>
+                      <input type="text" style="width: 10%" /> 年
+                      <input type="text" style="width: 10%" /> 月
+                      <input type="text" style="width: 10%" /> 日
+                      <label>※</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>最終学歴</th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        value="XXXXXXXXXX"
+                      /><label>※</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>法令による資格・免許</th>
+                    <td>
+                      <div>
+                        <div>
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            有</label
+                          >
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            無</label
+                          ><label>※</label>
+                        </div>
+                        <input
+                          type="text"
+                          maxlength="60"
+                          value="一級土木施工管理技士等"
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>登録番号</th>
+                    <td>
+                      <input type="text" maxlength="8" value="12345678" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>取得月</th>
+                    <td>
+                      <select>
+                        <option>昭和　</option>
+                      </select>
+                      <input type="text" style="width: 10%" /> 年
+                      <input type="text" style="width: 10%" /> 月
+                      <input type="text" style="width: 10%" /> 日
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>（同等とみなした内容）</th>
+                    <td>
+                      <input type="text" maxlength="60" value="XXXXXXXXXX" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>監理技術者資格者証の取得年月</th>
+                    <td>
+                      <select>
+                        <option>昭和　</option>
+                      </select>
+                      <input type="text" style="width: 10%" /> 年
+                      <input type="text" style="width: 10%" /> 月
+                      <input type="text" style="width: 10%" /> 日
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>登録番号</th>
+                    <td>
+                      <input type="text" maxlength="8" value="12345678" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>他工事の従事状況</th>
+                    <td>
+                      <div>
+                        <div>
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            有</label
+                          >
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            無</label
+                          ><label>※</label>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>コメント</th>
+                    <td>
+                      <textarea rows="2" cols="50" placeholder=""></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>配置予定技術者と営業所専任技術者の関係</th>
+                    <td>
+                      <div>
+                        <div>
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            である</label
+                          >
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            ではない</label
+                          ><label>※</label>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      技術者表彰［表彰名・工事名］（表彰者・年月日）、優秀工事技術者等表彰、優良技術者表彰、海外認定、表彰制度
+                    </th>
+                    <td>
+                      <div>
+                        <div>
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            有</label
+                          >
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            無</label
+                          ><label>※</label>
+                        </div>
+                        <input type="text" maxlength="60" value="XXXXXXXXXX" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>競争参加資格</th>
+                    <td>
+                      <div>
+                        <label>同種工事・類似工事の選択</label>
+                        <label
+                          ><input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          有</label
+                        >
+                        <label
+                          ><input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          無</label
+                        ><label>※</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>資格要件</th>
+                    <td>
+                      <input type="text" maxlength="60" value="XXXXXXXXXX" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>同種性</th>
+                    <td>
+                      <div>
+                        <div>
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            より同種性が高い</label
+                          >
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            やや同種性が高い</label
+                          >
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            同種性が認められる選択</label
+                          ><label>※</label>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>長期休暇期間</th>
+                    <td>
+                      <div>
+                        <div>
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />年
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />月
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />日<label>～</label>
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />年
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />月
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />日
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>産休育休の取得期間</th>
+                    <td>
+                      <div>
+                        <label>休業期間：</label>
+                        <div>
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />年
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />月
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />日<label>～</label>
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />年
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />月
+                          <input
+                            type="text"
+                            maxlength="60"
+                            value="XX"
+                            style="width: 10%"
+                          />日
+                        </div>
+                        <label>（</label>
+                        <input
+                          type="text"
+                          maxlength="60"
+                          value="XX"
+                          style="width: 10%"
+                        />年
+                        <input
+                          type="text"
+                          maxlength="60"
+                          value="XX"
+                          style="width: 10%"
+                        />ヵ月
+                        <label>）</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>事業促進PPPまたはCMの従事経験</th>
+                    <td>
+                      <textarea
+                        rows="2"
+                        cols="50"
+                        placeholder="発注機関：
+業務名：
+従事した役職：
+従事期間：XXXX年XX月XX日～XXXX年XX月XX日（X年Xヶ月）、
+従事内容："
+                      ></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>施工体制確認のためのヒアリング対象者区分</th>
+                    <td>
+                      <div>
+                        <div>
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            ヒアリング対象者（電話番号等）</label
+                          >
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="checkboxExample"
+                              value="1"
+                            />
+                            非対象者選択</label
+                          >
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>在籍出向の要件に適合する証明書類の有無</th>
+                    <td>
+                      <div>
+                        <label
+                          ><input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          在籍出向に該当しない
+                          <input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          有（資料を添付）</label
+                        >
+                      </div>
+                      <div>
+                        <input type="file" size="40" />
+                      </div>
+                      <table border="1">
+                        <tr class="align-center">
+                          <th width="30%">添付資料</th>
+                          <th width="50%">ファイル名</th>
+                          <th width="10%">サイズ</th>
+                          <th width="10%"></th>
+                        </tr>
+                        <tr class="align-center">
+                          <td>関連資料</td>
+                          <td>
+                            <div><a href="">関連資料.pdf</a></div>
+                          </td>
+                          <td>
+                            <div>0.5MB</div>
+                          </td>
+                          <td>
+                            <input
+                              type="button"
+                              class="btn"
+                              name=""
+                              value="削除"
+                            />
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>難工事指定対象工事の実績</th>
+                    <td>
+                      <div>
+                        <label
+                          ><input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          有（工事名・CORINS登録番号）
+                          <input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          無</label
+                        ><label>※</label>
+                      </div>
+                      <textarea rows="2" cols="50"></textarea>
+                      <div>
+                        <input type="file" size="40" />
+                      </div>
+                      <table border="1">
+                        <tr class="align-center">
+                          <th width="30%">添付資料</th>
+                          <th width="50%">ファイル名</th>
+                          <th width="10%">サイズ</th>
+                          <th width="10%"></th>
+                        </tr>
+                        <tr class="align-center">
+                          <td>関連資料</td>
+                          <td>
+                            <div><a href="">関連資料.pdf</a></div>
+                          </td>
+                          <td>
+                            <div>0.5MB</div>
+                          </td>
+                          <td>
+                            <input
+                              type="button"
+                              class="btn"
+                              name=""
+                              value="削除"
+                            />
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>学会誌や協会誌等へ執筆や投稿、発表論文などの実績</th>
+                    <td>
+                      <div>
+                        <label
+                          ><input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          有（学会誌等の名称）
+                          <input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          無</label
+                        ><label>※</label>
+                      </div>
+                      <textarea
+                        rows="2"
+                        cols="50"
+                        placeholder="・発行団体：
+・掲載年月日：令和XX年XX月XX日"
+                      ></textarea>
+                      <div>
+                        <input type="file" size="40" />
+                      </div>
+                      <table border="1">
+                        <tr class="align-center">
+                          <th width="30%">添付資料</th>
+                          <th width="50%">ファイル名</th>
+                          <th width="10%">サイズ</th>
+                          <th width="10%"></th>
+                        </tr>
+                        <tr class="align-center">
+                          <td>関連資料</td>
+                          <td>
+                            <div><a href="">関連資料.pdf</a></div>
+                          </td>
+                          <td>
+                            <div>0.5MB</div>
+                          </td>
+                          <td>
+                            <input
+                              type="button"
+                              class="btn"
+                              name=""
+                              value="削除"
+                            />
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      CDPの取得状況、CDP評価に該当するユニット数を記載継続教育（CPD）、継続教育（CPD）単位の取得状況、継続教育（CPD）の取り組み、継続教育の取組状況
+                    </th>
+                    <td>
+                      <div>
+                        <label
+                          ><input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          有
+                          <input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          無</label
+                        ><label>※</label>
+                      </div>
+                      <textarea rows="2" cols="50"></textarea>
+                      <div>
+                        <input type="file" size="40" />
+                      </div>
+                      <table border="1">
+                        <tr class="align-center">
+                          <th width="30%">添付資料</th>
+                          <th width="50%">ファイル名</th>
+                          <th width="10%">サイズ</th>
+                          <th width="10%"></th>
+                        </tr>
+                        <tr class="align-center">
+                          <td>関連資料</td>
+                          <td>
+                            <div><a href="">関連資料.pdf</a></div>
+                          </td>
+                          <td>
+                            <div>0.5MB</div>
+                          </td>
+                          <td>
+                            <input
+                              type="button"
+                              class="btn"
+                              name=""
+                              value="削除"
+                            />
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>技術論文等の投稿状況</th>
+                    <td>
+                      <div>
+                        <label>令和５年度中の技術論文等の投稿</label>
+                        <label
+                          ><input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          有
+                          <input
+                            type="checkbox"
+                            name="checkboxExample"
+                            value="1"
+                          />
+                          無</label
+                        ><label>※</label>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-2 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="確認印刷"
+                      class="btn"
+                      disabled
+                    />
+                  </div>
+                  <div class="col-3 align-center">
+                    <input
+                      type="button"
+                      name=""
+                      value="既存技術者情報の呼出"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-3 align-center">
+                    <input
+                      type="button"
+                      name=""
+                      value="入力画面の初期化"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-2 align-center">
+                    <input type="button" name="" value="登録" class="btn" />
+                  </div>
+                  <div class="col-2 align-right">
+                    <input type="button" name="" value="戻る" class="btn" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- search-form -->
+      </div>
+      <!-- bottom-area -->
+    </div>
+  </body>
+</html>
