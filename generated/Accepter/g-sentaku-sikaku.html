@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title></title>
+    <title>配置予定技術者の資格</title>
     <link rel="stylesheet" href="../styles/bootstrap-reboot.min.css" />
     <link rel="stylesheet" href="../styles/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="../styles/upsystem.css" />
@@ -37,7 +37,8 @@
         <div class="row">
           <ul>
             <li><a href="">技術資料入力選択メニューの表示</a></li>
-            <li>同種（及び類似）工事の施工実績</li>
+            <li><a href="">配置予定技術者の選択の表示</a></li>
+            <li>配置予定技術者の資格</li>
           </ul>
         </div>
       </div>
@@ -52,11 +53,17 @@
       </div>
       <!-- screen-title -->
 
-      <div class="row justify-content-sm-center">
-        <p class="bold red" style="font-size: 2rem;">
-          修正中
-        </p>
+      <div class="middle-area">
+        <div class="row justify-content-sm-center">
+          <div class="col-lg-8 align-left alert-message">
+            <p class="indentback">＊印のある項目は必須項目です。</p>
+            <p class="indentback">
+              ・入力をキャンセルする場合は、戻るボタンを押下してください。
+            </p>
+          </div>
+        </div>
       </div>
+      <!-- middle-area -->
 
       <div class="middle-area">
         <div class="row justify-content-center information">
@@ -67,428 +74,326 @@
         </div>
 
         <div>
-          <form>
-            <div class="row justify-content-sm-center">
-              <div class="col-8">
-                <table class="form-table">
-                  <tr>
-                    <th>所属会社名*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>建築許可番号*</th>
-                    <td>
-                      <select>
-                        <option>選択してください</option></select
-                      >-
-                      <input />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>技術者区分*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>その他役職名*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>氏名*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>フリガナ*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>生年月日*</th>
-                    <td>
-                      <select>
-                        <option>昭和</option>
-                        <option>平成</option>
-                        <option>令和</option>
-                        <option>西暦</option>
-                      </select>
-                      <input type="text" style="width: 50px" />
-                      年
-                      <input type="text" style="width: 50px" />
-                      月
-                      <input type="text" style="width: 50px" />
-                      日
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>最終学歴*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>法令による資格・免許*</th>
-                    <td>
-                      <div>
-                        <input type="checkbox" />
-                        <b>有</b>
-                        <input type="checkbox" />
-                        <b>無</b>
-                      </div>
-                      <div>
-                        <input type="text" style="width: 100%" />
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>登録番号*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>取得月*</th>
-                    <td>
-                      <select>
-                        <option>昭和</option>
-                        <option>平成</option>
-                        <option>令和</option>
-                        <option>西暦</option>
-                      </select>
-                      <input type="text" style="width: 50px" />
-                      年
-                      <input type="text" style="width: 50px" />
-                      月
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>（同等とみなした内容）*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 align-center">
-                <!-- <input type="submit" class="btn" value="input" /> -->
-                <a class="btn">submit</a>
-                <a class="btn">戻る</a>
-              </div>
-            </div>
-          </form>
-        </div>
-        <!-- user-form -->
-      </div>
-      <!-- middle-area -->
-
-      <div class="bottom-area">
-        <div class="row justify-content-center information">
-          <div class="col-lg-8 align-left">
-            <hr />
-            <p class="bold">会社情報</p>
-          </div>
-        </div>
-
-        <div>
-          <form>
-            <div class="row justify-content-sm-center">
-              <div class="col-8">
-                <table class="form-table">
-                  <tr>
-                    <th>所属会社名*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>建築許可番号*</th>
-                    <td>
-                      <select>
-                        <option>選択してください</option></select
-                      >-
-                      <input />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>技術者区分*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>その他役職名*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>氏名*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>フリガナ*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>生年月日*</th>
-                    <td>
-                    <td>
-                      <select>
-                        <option>昭和</option>
-                        <option>平成</option>
-                        <option>令和</option>
-                        <option>西暦</option>
-                      </select>
-                      <input type="text" style="width: 50px" />
-                      年
-                      <input type="text" style="width: 50px" />
-                      月
-                      <input type="text" style="width: 50px" />
-                      日
-                    </td>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>最終学歴*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>法令による資格・免許*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>登録番号*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>取得月*</th>
-
-                    <td>
-                      <select>
-                        <option>昭和</option>
-                        <option>平成</option>
-                        <option>令和</option>
-                        <option>西暦</option>
-                      </select>
-                      <input type="text" style="width: 50px" />
-                      年
-                      <input type="text" style="width: 50px" />
-                      月
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>（同等とみなした内容）*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>監理技術者資格者証の取得年月*</th>
-                    <td>
-                      <select>
-                        <option>昭和</option>
-                        <option>平成</option>
-                        <option>令和</option>
-                        <option>西暦</option>
-                      </select>
-                      <input type="text" style="width: 50px" />
-                      年
-                      <input type="text" style="width: 50px" />
-                      月
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>登録番号*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>他工事の従事状況*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>コメント*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>配置予定技術者と営業所専任技術者の関係*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      技術者表彰［表彰名・工事名］（表彰者・年月日）、優秀工事技術者等表彰、優良技術者表彰、海外認定、表彰制度*
-                    </th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>競争参加資格*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>資格要件*</th>
-                    性性
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>同種性*</th>
-                    <td>
-                      <input style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>有無</th>
-                    <td>
+          <div class="row justify-content-sm-center">
+            <div class="col-8">
+              <table class="form-table">
+                <tr>
+                  <th>所属会社名*</th>
+                  <td>
+                    <input style="width: 100%" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>建築許可番号*</th>
+                  <td>
+                    <select>
+                      <option>選択してください</option></select
+                    >-
+                    <input />
+                  </td>
+                </tr>
+                <tr>
+                  <th>技術者区分*</th>
+                  <td>
+                    <input style="width: 100%" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>その他役職名*</th>
+                  <td>
+                    <input style="width: 100%" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>氏名*</th>
+                  <td>
+                    <input style="width: 100%" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>フリガナ*</th>
+                  <td>
+                    <input style="width: 100%" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>生年月日*</th>
+                  <td>
+                    <select>
+                      <option>昭和</option>
+                      <option>平成</option>
+                      <option>令和</option>
+                      <option>西暦</option>
+                    </select>
+                    <input type="text" style="width: 50px" />
+                    年
+                    <input type="text" style="width: 50px" />
+                    月
+                    <input type="text" style="width: 50px" />
+                    日
+                  </td>
+                </tr>
+                <tr>
+                  <th>最終学歴*</th>
+                  <td>
+                    <input style="width: 100%" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>法令による資格・免許*</th>
+                  <td>
+                    <div>
                       <input type="checkbox" />
                       <b>有</b>
                       <input type="checkbox" />
                       <b>無</b>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>セレクトボックス</th>
-                    <td>
+                    </div>
+                    <div>
+                      <input type="text" style="width: 100%" />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>取得月</th>
+                  <td>
+                    <select>
+                      <option>昭和</option>
+                      <option>平成</option>
+                      <option>令和</option>
+                      <option>西暦</option>
+                    </select>
+                    <input type="text" style="width: 50px" />
+                    年
+                    <input type="text" style="width: 50px" />
+                    月
+                  </td>
+                </tr>
+                <tr>
+                  <th>（同等とみなした内容）</th>
+                  <td>
+                    <input style="width: 100%" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>監理技術者資格者証の取得年月</th>
+                  <td>
+                    <select>
+                      <option>昭和</option>
+                    </select>
+                    <input type="text" style="width: 50px" />
+                    年
+                    <input type="text" style="width: 50px" />
+                    月
+                    <input type="text" style="width: 50px" />
+                    日
+                  </td>
+                </tr>
+                <tr>
+                  <th>登録番号</th>
+                  <td>
+                    <input style="width: 100%" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>他工事の従事状況*</th>
+                  <td>
+                    <div>
+                      <input type="checkbox" />
+                      <b>有</b>
+                      <input type="checkbox" />
+                      <b>無</b>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>コメント</th>
+                  <td>
+                    <textarea style="width: 100%" rows="3"></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <th>配置予定技術者と営業所専任技術者の関係*</th>
+                  <td>
+                    <div>
+                      <input type="checkbox" />
+                      <b>である</b>
+                      <input type="checkbox" />
+                      <b>ではない</b>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    技術者表彰[表彰名・工事名]（優秀工事技術者等表彰、優良技術者等表彰、優良技術者表彰、海外認定、表彰制度）*
+                  </th>
+                  <td>
+                    <div>
+                      <input type="checkbox" />
+                      <b>有</b>
+                      <input type="checkbox" />
+                      <b>無</b>
+                    </div>
+                    <div>
+                      <input type="text" style="width: 100%" />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>競争参加資格*</th>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <div style="display: flex; align-items: center; gap: 8px">
+                        <input type="checkbox" />
+                        <b>同種工事</b>
+                        <input type="checkbox" />
+                        <b>類似工事</b>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>資格要件</th>
+                  <td>
+                    <input type="text" style="width: 100%" />
+                  </td>
+                </tr>
+                <tr>
+                  <th>同種性*</th>
+                  <td>
+                    <div>
+                      <div style="display: flex; align-items: center; gap: 8px">
+                        <input type="checkbox" />
+                        <b>より同種性が高い</b>
+                        <input type="checkbox" />
+                        <b>やや同種性が高い</b>
+                        <input type="checkbox" />
+                        <b>同種性が認められる</b>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>長期休暇期間</th>
+                  <td>
+                    <select>
+                      <option>昭和</option>
+                    </select>
+                    <input type="text" style="width: 50px" />
+                    年
+                    <input type="text" style="width: 50px" />
+                    月
+                    <input type="text" style="width: 50px" />
+                    日から<br />
+                    <div>
                       <select>
-                        <option value="1">
-                          選択肢の文字数によってセレクトボックスの幅が決まる
-                        </option>
+                        <option>昭和</option>
                       </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      コリンズに記載されていない同種の工事（加算点）の項目・数量等の記載（長い項目名プレビュー）
-                    </th>
-                    <td>
-                      <textarea
-                        style="width: 100%"
-                        rows="3"
-                        placeholder="rows=3"
-                      ></textarea>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>テキスト（1行）とボタン</th>
-                    <td>
-                      <input type="text" />
-                      <button type="button">ボタン</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>date</th>
-                    <td>
-                      <input type="date" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>period</th>
-                    <td>
-                      <input type="date" />
-                      <span>～</span>
-                      <input type="date" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>****円</th>
-                    <td>
-                      <input type="text" />
-                      <span>円</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>チェックボックス複数</th>
-                    <td>
+                      <input type="text" style="width: 50px" />
+                      年
+                      <input type="text" style="width: 50px" />
+                      月
+                      <input type="text" style="width: 50px" />
+                      日まで
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>産休育休の取得期間</th>
+                  <td>
+                    休業期間：<br />
+                    <select>
+                      <option>昭和</option>
+                    </select>
+                    <input type="text" style="width: 50px" />
+                    年
+                    <input type="text" style="width: 50px" />
+                    月
+                    <input type="text" style="width: 50px" />
+                    日から<br />
+                    <div>
+                      <select>
+                        <option>昭和</option>
+                      </select>
+                      <input type="text" style="width: 50px" />
+                      年
+                      <input type="text" style="width: 50px" />
+                      月
+                      <input type="text" style="width: 50px" />
+                      日まで
+                    </div>
+                    （
+                    <input type="text" style="width: 50px" />年
+                    <input type="text" style="width: 50px" />ヵ月 ）
+                  </td>
+                </tr>
+                <tr>
+                  <th>事業促進PPPまたはCMの従事経験</th>
+                  <td>
+                    <textarea style="width: 100%" rows="3"></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <th>施工体制確認のためのヒアリング対象者区分</th>
+                  <td>
+                    <div>
                       <input type="checkbox" />
-                      <b>選択肢1</b>
+                      <b>ヒアリング対象者（電話番号等）</b>
                       <input type="checkbox" />
-                      <b> 選択肢2</b>
-                      <input type="checkbox" />
-                      <b>選択肢3</b>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>添付ファイル input使うと崩れる</th>
-                    <td>
-                      <table class="file-upload" style="width: 100%">
-                        <tr>
-                          <th
-                            style="
-                              width: 30%;
-                              border: 1px solid #000;
-                              text-align: center;
-                            "
-                          >
-                            <span>添付資料</span>
-                          </th>
-                          <th
-                            style="
-                              width: 40%;
-                              border: 1px solid #000;
-                              text-align: center;
-                            "
-                          >
-                            <span>ファイル名</span>
-                          </th>
-                          <th
-                            style="
-                              width: 15%;
-                              border: 1px solid #000;
-                              text-align: center;
-                            "
-                          >
-                            <span>サイズ</span>
-                          </th>
-                          <th style="width: 15%; border: 1px solid #000"></th>
-                        </tr>
-                        <tr>
-                          <td style="border: 1px solid #000">ファイル名1</td>
-                          <td style="border: 1px solid #000">
-                            <a href="">ファイル名1.pdf</a>
-                          </td>
-                          <td
-                            style="border: 1px solid #000; text-align: center"
-                          >
-                            100KB
-                          </td>
-                          <td
-                            style="border: 1px solid #000; text-align: center"
-                          >
-                            <button type="button">削除</button>
-                          </td>
-                        </tr>
-                        <!-- <tr>
+                      <b>非対象者選択</b>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>在籍出向の要件に適合する証明書類の有無</th>
+                  <td>
+                    <input type="checkbox" />
+                    <b>在籍出向に該当しない</b>
+                    <input type="checkbox" />
+                    <b>有（資料を添付）</b>
+                    <table class="file-upload" style="width: 100%">
+                      <tr>
+                        <th
+                          style="
+                            width: 30%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>添付資料</span>
+                        </th>
+                        <th
+                          style="
+                            width: 40%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>ファイル名</span>
+                        </th>
+                        <th
+                          style="
+                            width: 15%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>サイズ</span>
+                        </th>
+                        <th style="width: 15%; border: 1px solid #000"></th>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #000">ファイル名1</td>
+                        <td style="border: 1px solid #000">
+                          <a href="">ファイル名1.pdf</a>
+                        </td>
+                        <td style="border: 1px solid #000; text-align: center">
+                          100KB
+                        </td>
+                        <td style="border: 1px solid #000; text-align: center">
+                          <button type="button">削除</button>
+                        </td>
+                      </tr>
+                      <!-- <tr>
                           <td style="border: 1px solid #000">ファイル名2</td>
                           <td style="border: 1px solid #000">
                             <input type="file" />
@@ -498,103 +403,300 @@
                             <button type="button" disabled>削除</button>
                           </td>
                         </tr> -->
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>2桁数字 + %</th>
-                    <td>
-                      <input type="text" style="width: 50px" />
-                      <span>%</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>TEL</th>
-                    <td>
-                      <input
-                        type="tel"
-                        style="width: 60px; display: inline-block"
-                        maxlength="3"
-                      />
-                      -
-                      <input
-                        type="tel"
-                        style="width: 80px; display: inline-block"
-                        maxlength="4"
-                      />
-                      -
-                      <input
-                        type="tel"
-                        style="width: 80px; display: inline-block"
-                        maxlength="4"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>メールアドレス</th>
-                    <td>
-                      <input type="email" style="width: 100%" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>郵便番号</th>
-                    <td>
-                      <input type="text" style="width: 100%" />
-                      <span>（ハイフンなし）</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>受賞企業</th>
-                    <td>
-                      ■国土技術開発省
-                      <div>
-                        <label><input type="checkbox" value="有" />有</label>
-                        <label><input type="checkbox" value="無" />無</label>
-                        <span style="margin-left: 1em"
-                          >受賞年月日:
-                          <input type="date" name="award_kokudo_date"
-                        /></span>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <th>難工事指定対象工事の実績*</th>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <span class="bold mr-1">工事名・CORINS登録番号</span>
+                      <input type="checkbox" />
+                      <b>有</b>
+                      <input type="checkbox" />
+                      <b>無</b>
+                    </div>
+                    <textarea style="width: 100%" rows="3"></textarea>
+                    <table class="file-upload" style="width: 100%">
+                      <tr>
+                        <th
+                          style="
+                            width: 30%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>添付資料</span>
+                        </th>
+                        <th
+                          style="
+                            width: 40%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>ファイル名</span>
+                        </th>
+                        <th
+                          style="
+                            width: 15%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>サイズ</span>
+                        </th>
+                        <th style="width: 15%; border: 1px solid #000"></th>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #000">ファイル名1</td>
+                        <td style="border: 1px solid #000">
+                          <a href="">ファイル名1.pdf</a>
+                        </td>
+                        <td style="border: 1px solid #000; text-align: center">
+                          100KB
+                        </td>
+                        <td style="border: 1px solid #000; text-align: center">
+                          <button type="button">削除</button>
+                        </td>
+                      </tr>
+                      <!-- <tr>
+                          <td style="border: 1px solid #000">ファイル名2</td>
+                          <td style="border: 1px solid #000">
+                            <input type="file" />
+                          </td>
+                          <td style="border: 1px solid #000"></td>
+                          <td style="border: 1px solid #000">
+                            <button type="button" disabled>削除</button>
+                          </td>
+                        </tr> -->
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <th>学会誌や協会誌等へ執筆や投稿、発表論文などの実績*</th>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <span class="bold mr-1">学会誌等の名称</span>
+                      <input type="checkbox" />
+                      <b>有</b>
+                      <input type="checkbox" />
+                      <b>無</b>
+                    </div>
+                    <textarea style="width: 100%" rows="3"></textarea>
+                    <table class="file-upload" style="width: 100%">
+                      <tr>
+                        <th
+                          style="
+                            width: 30%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>添付資料</span>
+                        </th>
+                        <th
+                          style="
+                            width: 40%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>ファイル名</span>
+                        </th>
+                        <th
+                          style="
+                            width: 15%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>サイズ</span>
+                        </th>
+                        <th style="width: 15%; border: 1px solid #000"></th>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #000">ファイル名1</td>
+                        <td style="border: 1px solid #000">
+                          <a href="">ファイル名1.pdf</a>
+                        </td>
+                        <td style="border: 1px solid #000; text-align: center">
+                          100KB
+                        </td>
+                        <td style="border: 1px solid #000; text-align: center">
+                          <button type="button">削除</button>
+                        </td>
+                      </tr>
+                      <!-- <tr>
+                          <td style="border: 1px solid #000">ファイル名2</td>
+                          <td style="border: 1px solid #000">
+                            <input type="file" />
+                          </td>
+                          <td style="border: 1px solid #000"></td>
+                          <td style="border: 1px solid #000">
+                            <button type="button" disabled>削除</button>
+                          </td>
+                        </tr> -->
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    CDPの取得状況、CDP評価に該当するユニット数を記載継続教育（CPD）、継続教育（CPD）単位の取得状況、継続教育（CPD）の取り組み、継続教育の取組状況
+                    *
+                  </th>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <input type="checkbox" />
+                      <b>有</b>
+                      <input type="checkbox" />
+                      <b>無</b>
+                    </div>
+                    <textarea style="width: 100%" rows="3"></textarea>
+                    <table class="file-upload" style="width: 100%">
+                      <tr>
+                        <th
+                          style="
+                            width: 30%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>添付資料</span>
+                        </th>
+                        <th
+                          style="
+                            width: 40%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>ファイル名</span>
+                        </th>
+                        <th
+                          style="
+                            width: 15%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>サイズ</span>
+                        </th>
+                        <th style="width: 15%; border: 1px solid #000"></th>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #000">ファイル名1</td>
+                        <td style="border: 1px solid #000">
+                          <a href="">ファイル名1.pdf</a>
+                        </td>
+                        <td style="border: 1px solid #000; text-align: center">
+                          100KB
+                        </td>
+                        <td style="border: 1px solid #000; text-align: center">
+                          <button type="button">削除</button>
+                        </td>
+                      </tr>
+                      <!-- <tr>
+                          <td style="border: 1px solid #000">ファイル名2</td>
+                          <td style="border: 1px solid #000">
+                            <input type="file" />
+                          </td>
+                          <td style="border: 1px solid #000"></td>
+                          <td style="border: 1px solid #000">
+                            <button type="button" disabled>削除</button>
+                          </td>
+                        </tr> -->
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <th>技術論文等の投稿状況*</th>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                      <span class="bold mr-1"
+                        >令和5年度中の技術論文等の投稿状況</span
+                      >
+                      <div style="display: flex; align-items: center; gap: 8px">
+                        <input type="checkbox" />
+                        <b>有</b>
+                        <input type="checkbox" />
+                        <b>無</b>
                       </div>
-                      <hr />
-                      ■コンストラクション大賞
-                      <div>
-                        <label><input type="checkbox" value="有" />有</label>
-                        <label><input type="checkbox" value="無" />無</label>
-                        <span style="margin-left: 1em"
-                          >受賞年月日:
-                          <input type="date" name="award_construction_date"
-                        /></span>
-                      </div>
-                      <hr />
-                      ■その他DX大賞
-                      <div>
-                        <label><input type="checkbox" value="有" />有</label>
-                        <label><input type="checkbox" value="無" />無</label>
-                        <span style="margin-left: 1em"
-                          >受賞年月日: <input type="date" name="award_dx_date"
-                        /></span>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
+                    </div>
+                    <table class="file-upload" style="width: 100%">
+                      <tr>
+                        <th
+                          style="
+                            width: 30%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>添付資料</span>
+                        </th>
+                        <th
+                          style="
+                            width: 40%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>ファイル名</span>
+                        </th>
+                        <th
+                          style="
+                            width: 15%;
+                            border: 1px solid #000;
+                            text-align: center;
+                          "
+                        >
+                          <span>サイズ</span>
+                        </th>
+                        <th style="width: 15%; border: 1px solid #000"></th>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #000">ファイル名1</td>
+                        <td style="border: 1px solid #000">
+                          <a href="">ファイル名1.pdf</a>
+                        </td>
+                        <td style="border: 1px solid #000; text-align: center">
+                          100KB
+                        </td>
+                        <td style="border: 1px solid #000; text-align: center">
+                          <button type="button">削除</button>
+                        </td>
+                      </tr>
+                      <!-- <tr>
+                          <td style="border: 1px solid #000">ファイル名2</td>
+                          <td style="border: 1px solid #000">
+                            <input type="file" />
+                          </td>
+                          <td style="border: 1px solid #000"></td>
+                          <td style="border: 1px solid #000">
+                            <button type="button" disabled>削除</button>
+                          </td>
+                        </tr> -->
+                    </table>
+                  </td>
+                </tr>
+              </table>
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col-12 align-center">
-                <!-- <input type="submit" class="btn" value="input" /> -->
-                <a class="btn">確認印刷</a>
-                <a class="btn">既存施工実績の呼出</a>
-                <a class="btn">入力画面の初期化</a>
-                <a class="btn">登録</a>
-                <a class="btn">メニューに戻る</a>
-              </div>
+          <div class="row">
+            <div class="col-12 align-center">
+              <!-- <input type="submit" class="btn" value="input" /> -->
+              <a class="btn">確認印刷</a>
+              <a class="btn">既存施工実績の呼出</a>
+              <a class="btn">入力画面の初期化</a>
+              <a class="btn">登録</a>
+              <a class="btn">戻る</a>
             </div>
-          </form>
+          </div>
         </div>
         <!-- user-form -->
       </div>
-      <!-- bottom-area -->
+      <!-- middle-area -->
     </div>
   </body>
 </html>
