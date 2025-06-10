@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html
+  lang="ja"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/UC01_OrdLayout}"
+>
+  <head>
+    <title>参加申請様式の設定</title>
+    <link rel="stylesheet" href="../styles/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="../styles/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="../styles/upsystem.css" />
+  </head>
+
+  <header class="header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="logo vertical-center">
+            <h1>技術資料等アップロードシステム</h1>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end align-items-center">
+          <input class="btn" type="button" value="閉じる" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <body>
+    <div class="container" layout:fragment="contents">
+      <div class="breadcrumbs">
+        <div class="row">
+          <ul>
+            <li>参加業者一覧及び参加申請様式設定</li>
+          </ul>
+        </div>
+      </div>
+      <!-- breadcrumbs -->
+
+      <div class="screen-title mb-4">
+        <div class="row">
+          <div class="col-12 align-center">
+            <h2>参加業者一覧及び参加申請様式設定</h2>
+          </div>
+        </div>
+      </div>
+      <!-- screen-title -->
+
+      <div class="top-area mb-4">
+        <div class="row">
+          <div class="col-lg-6">
+            <table class="table">
+              <tr>
+                <th>調達案件番号</th>
+                <td>01234567890123456789</td>
+              </tr>
+              <tr>
+                <th>調達案件名称</th>
+                <td><a href="">調達案件名称</a></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="middle-area">
+        <div class="row justify-content-sm-center">
+          <div class="col-lg-8 align-center alert-message">
+            <p class="indentback">
+              ＊技術資料添付ファイル一括設定にチェックが入ってないときは印のある項目は必須項目です。
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- middle-area -->
+
+      <div class="middle-area">
+        <div class="row mb-4">
+          <div class="col-md-12 align-right">
+            <input type="button" name="" value="参加業者一覧" class="btn" />
+          </div>
+          <div class="col-md-12 align-center">
+            <label class="mr-3">
+              <input type="checkbox" name="bulk" value="1" />
+              技術資料添付ファイル一括設定
+            </label>
+          </div>
+        </div>
+
+        <!-- <div class="row justify-content-sm-center mb-4">
+          <div class="col-md-8 align-left alert-message">
+            <p
+              class="indentback align-center"
+              style="color: red; font-weight: bold"
+            >
+              参加申請様式が登録されました。
+            </p>
+          </div>
+        </div> -->
+
+        <div id="newSystemSection">
+          <div class="row align-center mb-3 justify-content-center">
+            <div class="col-md-4">
+              <h4 class="mb-0">同種（及び類似）工事の施工実績*</h4>
+              <p style="color: red; font-size: 0.8rem">
+                ※同種（及び類似）工事の施工実績を選択してください。
+              </p>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex justify-content-center">
+                <select class="form-control mr-2" style="width: 60%">
+                  <option value="">A様式</option>
+                  <option value="">B様式</option>
+                  <option value="">C様式</option>
+                  <option value="">新規作成</option>
+                </select>
+                <button type="button" class="btn btn-outline-secondary mr-2">
+                  詳細
+                </button>
+                <button type="button" class="btn btn-outline-secondary">
+                  新規作成
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row align-center mb-3 justify-content-center">
+            <div class="col-md-4">
+              <h4 class="mb-0">配置予定技術者の資格*</h4>
+              <p style="color: red; font-size: 0.8rem">
+                ※配置予定技術者の資格を選択してください。
+              </p>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex justify-content-center">
+                <select class="form-control mr-2" style="width: 60%">
+                  <option value="">D様式</option>
+                  <option value="">E様式</option>
+                  <option value="">F様式</option>
+                  <option value="">新規作成</option>
+                </select>
+                <button type="button" class="btn btn-outline-secondary mr-2">
+                  詳細
+                </button>
+                <button type="button" class="btn btn-outline-secondary">
+                  新規作成
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row align-center mb-3 justify-content-center">
+            <div class="col-md-4">
+              <h4 class="mb-0">配置予定技術者の工事経験*</h4>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex justify-content-center">
+                <select class="form-control mr-2" style="width: 60%">
+                  <option>新規作成</option>
+                  <option>選択してください</option>
+                </select>
+                <button type="button" class="btn btn-outline-secondary mr-2">
+                  詳細
+                </button>
+                <button type="button" class="btn btn-outline-secondary">
+                  新規作成
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row align-center mb-4 justify-content-center">
+            <div class="col-md-4">
+              <h4 class="mb-0">配置予定技術者の他工事従事状況*</h4>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex justify-content-center">
+                <select class="form-control mr-2" style="width: 60%">
+                  <option>選択してください</option>
+                  <option>新規作成</option>
+                </select>
+                <button type="button" class="btn btn-outline-secondary mr-2">
+                  詳細
+                </button>
+                <button type="button" class="btn btn-outline-secondary">
+                  新規作成
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="align-center" style="margin-top: 40px">
+          <a
+            class="btn"
+            style="text-decoration: none"
+            onclick="if(!confirm('この内容で登録してよろしいですか？')){return false;} else { return false; }"
+            >登録</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
