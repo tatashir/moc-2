@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>配置予定技術者の選択</title>
+    <link rel="stylesheet" href="../styles/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="../styles/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="../styles/upsystem.css" />
+  </head>
+  <body>
+    <header class="header" layout:fragment="header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="logo vertical-center">
+              <h1>技術資料等アップロードシステム</h1>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="tools vertical-right">
+              <input class="btn" type="button" name="" value="閉じる" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container" layout:fragment="contents">
+      <div class="breadcrumbs">
+        <div class="row">
+          <ul>
+            <li><a href="">技術資料入力選択メニュー</a></li>
+            <li>配置予定技術者の選択</li>
+          </ul>
+        </div>
+      </div>
+      <!-- breadcrumbs -->
+
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12 align-center">
+            <h2>配置予定技術者の選択</h2>
+          </div>
+        </div>
+      </div>
+      <!-- screen-title -->
+
+      <div class="top-area">
+        <div class="row">
+          <div class="col-lg-6">
+            <table class="table">
+              <tr>
+                <th>調達案件番号</th>
+                <td>1234567890123456789</td>
+              </tr>
+              <tr>
+                <th>調達案件名称</th>
+                <td>
+                  <a href="">調達案件名称</a>
+                </td>
+              </tr>
+              <tr>
+                <th>対象申請書種別</th>
+                <td>対象申請書種別</td>
+              </tr>
+              <tr>
+                <th>対象資料種別</th>
+                <td>対象資料種別</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- top-area -->
+
+      <!-- <div class="screen-title">
+        <div class="row">
+          <div class="col-12 align-center">
+            <h2>基本情報入力画面</h2>
+          </div>
+        </div>
+      </div> -->
+      <!-- screen-title -->
+
+      <div class="bottom-area">
+        <div class="row justify-content-sm-center">
+          <div class="col-md-12 align-center alert-message">
+            <p class="indentback">※10名まで登録できます。</p>
+            <!-- <p class="indentback">
+              ※ファイルはウイルスチェックを最新版のチェックデータで行ってください。<br />
+            </p> -->
+          </div>
+        </div>
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row">
+              <!-- <div class="col-12 align-center"> -->
+              <!-- <input type="button" name="" value="提出" class="btn" /> -->
+              <!-- <input
+                  type="button"
+                  id="returnbtn"
+                  name=""
+                  value="メニューに戻る"
+                  class="btn"
+                />
+              </div> -->
+            </div>
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h3>１</h3>
+                <table class="form-table">
+                  <tr>
+                    <th><button>氏名・資格等の入力</button></th>
+                    <td>
+                      <!-- <input type="text" maxlength="60" /> -->
+                      <div style="margin: 4px">
+                        監理技術者 平成XX年取得 XXXX
+                      </div>
+                      <div style="margin: 4px">昭和XX年XX月XX日生 ○○ ○○</div>
+                      <div style="margin: 4px">
+                        一級土木施工管理技士 平成XX年取得
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>工事経験の入力</button></th>
+                    <td>
+                      <div style="margin: 4px">○○○○○○○○○○○○工事</div>
+                      <div style="margin: 4px">△△△△△△△△△△△△工事</div>
+                      <div style="margin: 4px">□□□□□□□□□□□□工事</div>
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>他工事の従事状況</button></th>
+                    <td>
+                      <div style="margin: 4px">○○○○○○○○○○○○工事</div>
+                      <div style="margin: 4px">△△△△△△△△△△△△工事</div>
+                      <div style="margin: 4px">□□□□□□□□□□□□工事</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="技術者情報削除"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-6 align-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row error" id="message">
+              <div class="col-12 align-center">
+                <ul>
+                  <li
+                    th:if="${#fields.hasErrors('projectNo')}"
+                    th:errors="*{projectNo}"
+                  >
+                    #fields.hasErrors('projectNo')
+                  </li>
+
+                  <li>XXが選択されていません。</li>
+                  <li>XXに失敗しました。</li>
+                </ul>
+              </div>
+            </div> -->
+          </form>
+        </div>
+        <!-- search-form -->
+
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h3>２</h3>
+                <table class="form-table">
+                  <tr>
+                    <th><button>氏名・資格等の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>工事経験の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>他工事の従事状況</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="技術者情報削除"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-6 align-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row error" id="message">
+              <div class="col-12 align-center">
+                <ul>
+                  <li
+                    th:if="${#fields.hasErrors('projectNo')}"
+                    th:errors="*{projectNo}"
+                  >
+                    #fields.hasErrors('projectNo')
+                  </li>
+
+                  <li>XXが選択されていません。</li>
+                  <li>XXに失敗しました。</li>
+                </ul>
+              </div>
+            </div> -->
+          </form>
+        </div>
+        <!-- search-form -->
+
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h3>３</h3>
+                <table class="form-table">
+                  <tr>
+                    <th><button>氏名・資格等の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>工事経験の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>他工事の従事状況</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="技術者情報削除"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-6 align-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row error" id="message">
+              <div class="col-12 align-center">
+                <ul>
+                  <li
+                    th:if="${#fields.hasErrors('projectNo')}"
+                    th:errors="*{projectNo}"
+                  >
+                    #fields.hasErrors('projectNo')
+                  </li>
+
+                  <li>XXが選択されていません。</li>
+                  <li>XXに失敗しました。</li>
+                </ul>
+              </div>
+            </div> -->
+          </form>
+        </div>
+        <!-- search-form -->
+
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h3>４</h3>
+                <table class="form-table">
+                  <tr>
+                    <th><button>氏名・資格等の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>工事経験の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>他工事の従事状況</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="技術者情報削除"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-6 align-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row error" id="message">
+              <div class="col-12 align-center">
+                <ul>
+                  <li
+                    th:if="${#fields.hasErrors('projectNo')}"
+                    th:errors="*{projectNo}"
+                  >
+                    #fields.hasErrors('projectNo')
+                  </li>
+
+                  <li>XXが選択されていません。</li>
+                  <li>XXに失敗しました。</li>
+                </ul>
+              </div>
+            </div> -->
+          </form>
+        </div>
+        <!-- search-form -->
+
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h3>５</h3>
+                <table class="form-table">
+                  <tr>
+                    <th><button>氏名・資格等の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>工事経験の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>他工事の従事状況</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="技術者情報削除"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-6 align-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row error" id="message">
+              <div class="col-12 align-center">
+                <ul>
+                  <li
+                    th:if="${#fields.hasErrors('projectNo')}"
+                    th:errors="*{projectNo}"
+                  >
+                    #fields.hasErrors('projectNo')
+                  </li>
+
+                  <li>XXが選択されていません。</li>
+                  <li>XXに失敗しました。</li>
+                </ul>
+              </div>
+            </div> -->
+          </form>
+        </div>
+        <!-- search-form -->
+
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h3>６</h3>
+                <table class="form-table">
+                  <tr>
+                    <th><button>氏名・資格等の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>工事経験の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>他工事の従事状況</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="技術者情報削除"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-6 align-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row error" id="message">
+              <div class="col-12 align-center">
+                <ul>
+                  <li
+                    th:if="${#fields.hasErrors('projectNo')}"
+                    th:errors="*{projectNo}"
+                  >
+                    #fields.hasErrors('projectNo')
+                  </li>
+
+                  <li>XXが選択されていません。</li>
+                  <li>XXに失敗しました。</li>
+                </ul>
+              </div>
+            </div> -->
+          </form>
+        </div>
+        <!-- search-form -->
+
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h3>７</h3>
+                <table class="form-table">
+                  <tr>
+                    <th><button>氏名・資格等の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>工事経験の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>他工事の従事状況</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="技術者情報削除"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-6 align-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row error" id="message">
+              <div class="col-12 align-center">
+                <ul>
+                  <li
+                    th:if="${#fields.hasErrors('projectNo')}"
+                    th:errors="*{projectNo}"
+                  >
+                    #fields.hasErrors('projectNo')
+                  </li>
+
+                  <li>XXが選択されていません。</li>
+                  <li>XXに失敗しました。</li>
+                </ul>
+              </div>
+            </div> -->
+          </form>
+        </div>
+        <!-- search-form -->
+
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h3>８</h3>
+                <table class="form-table">
+                  <tr>
+                    <th><button>氏名・資格等の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>工事経験の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>他工事の従事状況</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="技術者情報削除"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-6 align-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row error" id="message">
+              <div class="col-12 align-center">
+                <ul>
+                  <li
+                    th:if="${#fields.hasErrors('projectNo')}"
+                    th:errors="*{projectNo}"
+                  >
+                    #fields.hasErrors('projectNo')
+                  </li>
+
+                  <li>XXが選択されていません。</li>
+                  <li>XXに失敗しました。</li>
+                </ul>
+              </div>
+            </div> -->
+          </form>
+        </div>
+        <!-- search-form -->
+
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h3>９</h3>
+                <table class="form-table">
+                  <tr>
+                    <th><button>氏名・資格等の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>工事経験の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>他工事の従事状況</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="技術者情報削除"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-6 align-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row error" id="message">
+              <div class="col-12 align-center">
+                <ul>
+                  <li
+                    th:if="${#fields.hasErrors('projectNo')}"
+                    th:errors="*{projectNo}"
+                  >
+                    #fields.hasErrors('projectNo')
+                  </li>
+
+                  <li>XXが選択されていません。</li>
+                  <li>XXに失敗しました。</li>
+                </ul>
+              </div>
+            </div> -->
+          </form>
+        </div>
+        <!-- search-form -->
+
+        <div class="search-form">
+          <form role="form" method="get">
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <h3>１０</h3>
+                <table class="form-table">
+                  <tr>
+                    <th><button>氏名・資格等の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>工事経験の入力</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+                <table class="form-table">
+                  <tr>
+                    <th><button>他工事の従事状況</button></th>
+                    <td>
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                      <input
+                        type="text"
+                        maxlength="60"
+                        style="margin: 4px"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row justify-content-sm-center">
+              <div class="col-md-12">
+                <div class="row justify-content-between">
+                  <div class="col-6 align-left">
+                    <input
+                      type="button"
+                      name=""
+                      value="技術者情報削除"
+                      class="btn"
+                    />
+                  </div>
+                  <div class="col-6 align-right"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row error" id="message">
+              <div class="col-12 align-center">
+                <ul>
+                  <li
+                    th:if="${#fields.hasErrors('projectNo')}"
+                    th:errors="*{projectNo}"
+                  >
+                    #fields.hasErrors('projectNo')
+                  </li>
+
+                  <li>XXが選択されていません。</li>
+                  <li>XXに失敗しました。</li>
+                </ul>
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="col-12 align-center">
+                <input type="button" value="メニューに戻る" class="btn" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- search-form -->
+      </div>
+      <!-- bottom-area -->
+    </div>
+  </body>
+</html>
