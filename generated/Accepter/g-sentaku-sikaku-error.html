@@ -1,7 +1,7 @@
 <!--/*
  //******************************************************
  //
- // 配置予定技術者の資格画面（g-sentaku.html）
+ // 配置予定技術者の資格画面（g-sentaku-error.html）
  //
  //******************************************************
 */-->
@@ -66,6 +66,16 @@
       <!-- middle-area -->
 
       <div class="middle-area">
+        <div class="row justify-content-center">
+          <div class="col-md-8 align-left alert-message">
+            <div>
+              <p class="indentback red bold">
+                ※入力されていない項目があります。<br />
+                入力内容を確認の上、再度登録ボタンを押下してください。
+              </p>
+            </div>
+          </div>
+        </div>
         <div class="row justify-content-center information">
           <div class="col-lg-8 align-left">
             <!-- <hr /> -->
@@ -78,13 +88,23 @@
             <div class="col-8">
               <table class="form-table">
                 <tr>
-                  <th>所属会社名*</th>
+                  <th>
+                    所属会社名*
+                    <p style="color: red; font-size: 0.8rem">
+                      ※所属会社名を入力してください。
+                    </p>
+                  </th>
                   <td>
                     <input style="width: 100%" />
                   </td>
                 </tr>
                 <tr>
-                  <th>建築許可番号*</th>
+                  <th>
+                    建築許可番号*
+                    <p style="color: red; font-size: 0.8rem">
+                      ※建築許可番号を選択してください。
+                    </p>
+                  </th>
                   <td>
                     <select>
                       <option>選択してください</option></select
@@ -93,7 +113,12 @@
                   </td>
                 </tr>
                 <tr>
-                  <th>技術者区分*</th>
+                  <th>
+                    技術者区分*
+                    <p style="color: red; font-size: 0.8rem">
+                      ※技術者区分を入力してください。
+                    </p>
+                  </th>
                   <td>
                     <input style="width: 100%" />
                   </td>
