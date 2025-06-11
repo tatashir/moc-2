@@ -1,0 +1,350 @@
+<!--/*
+ //***************************
+ //
+ // 参加申請様式作成（配置予定技術者の他工事の従事状況）（yousiki-keiken.html）
+ //
+ //***************************
+*/-->
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>参加申請様式作成（配置予定技術者の他工事の従事状況）</title>
+    <link rel="stylesheet" href="../styles/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="../styles/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="../styles/upsystem.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="logo vertical-center">
+              <h1>技術資料等アップロードシステム</h1>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="tools vertical-right">
+              <input class="btn" type="button" name="" value="閉じる" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- header -->
+
+    <div class="container">
+      <div class="breadcrumbs">
+        <div class="row">
+          <ul>
+            <li><a href="">調達案件検索の表示</a></li>
+            <li><a href="">調達案件一覧の表示</a></li>
+            <li><a href="">参加業者一覧及び参加申請様式設定の表示</a></li>
+            <li>参加申請様式作成（配置予定技術者の他工事の従事状況）</li>
+          </ul>
+        </div>
+      </div>
+      <!-- breadcrumbs -->
+
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12 align-center">
+            <h2>参加申請様式作成（配置予定技術者の他工事の従事状況）</h2>
+          </div>
+        </div>
+      </div>
+      <!-- screen-title -->
+
+      <div class="top-area">
+        <div class="row">
+          <div class="col-lg-6">
+            <table class="table">
+              <tr>
+                <th>調達案件番号</th>
+                <td>1234567890123456789</td>
+              </tr>
+              <tr>
+                <th>調達案件名称</th>
+                <td>
+                  <a href="">A案件</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- top-area -->
+
+      <div class="align-center mb-4 justify-content-center">
+        <div class="col-md-10">
+          <dialog
+            id="myDialog"
+            style="padding: 0; min-height: 300px; min-width: 400px"
+          >
+            <div
+              style="
+                background-color: #f0f0ff;
+                border: 1px solid #fff;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 300px;
+              "
+            >
+              <p
+                style="
+                  font-size: 1.2rem;
+                  margin-bottom: 24px;
+                  margin-top: 0;
+                  text-align: center;
+                "
+              >
+                XX様式を削除してよろしいですか？
+              </p>
+              <div style="display: flex; gap: 16px">
+                <button
+                  class="btn"
+                  onclick="alert('削除しました'); document.getElementById('myDialog').close();"
+                >
+                  OK
+                  <button
+                    class="btn"
+                    onclick="document.getElementById('myDialog').close()"
+                  >
+                    戻る
+                  </button>
+                </button>
+              </div>
+            </div>
+          </dialog>
+        </div>
+      </div>
+
+      <div class="middle-area">
+        <div class="row justify-content-sm-center">
+          <div class="col-lg-8 align-left alert-message">
+            <p class="indentback">＊印のある項目は必須項目です。</p>
+            <p class="indentback">
+              ・入力をキャンセルする場合は、参加申請様式設定画面に戻るボタンを押下してください。
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- middle-area -->
+
+      <div class="middle-area">
+        <div class="row justify-content-center information">
+          <div class="col-lg-8 align-left">
+            <!-- <hr /> -->
+            <p class="bold">様式新規作成</p>
+          </div>
+        </div>
+
+        <div>
+          <form>
+            <div class="row justify-content-sm-center">
+              <div class="col-8">
+                <table class="form-table">
+                  <tr>
+                    <th>様式名*</th>
+                    <td>
+                      <input style="width: 100%" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- user-form -->
+      </div>
+      <!-- middle-area -->
+
+      <div class="middle-area">
+        <div class="row justify-content-center information">
+          <div class="col-lg-8 align-left">
+            <hr />
+            <p class="bold">申請項目選択</p>
+          </div>
+        </div>
+
+        <div>
+          <form>
+            <div class="row justify-content-sm-center">
+              <div class="col-8">
+                <table class="form-table">
+                  <colgroup>
+                    <col style="width: 10%" />
+                    <col style="width: 90%" />
+                  </colgroup>
+                  <tr>
+                    <th style="text-align: center">表示</th>
+                    <th style="text-align: center">項目名</th>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center">
+                      <input type="checkbox" />
+                    </td>
+                    <td>本工事を落札した場合の対応処置等</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center">
+                      <input type="checkbox" />
+                    </td>
+                    <td>営業所における専任の技術者として従事</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center">
+                      <input type="checkbox" />
+                    </td>
+                    <td>
+                      営業所における専任の技術者として従事（常駐）する期間
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center">
+                      <input type="checkbox" />
+                    </td>
+                    <td>特例監理技術者の配置の有無</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- user-form -->
+      </div>
+      <!-- middle-area -->
+
+      <div class="middle-area">
+        <div class="row justify-content-center information">
+          <div class="col-lg-8 align-left">
+            <hr />
+            <p class="bold">申請項目追加</p>
+          </div>
+        </div>
+
+        <div>
+          <form>
+            <div class="row justify-content-sm-center">
+              <div class="col-8">
+                <table class="form-table">
+                  <colgroup>
+                    <col style="width: 5%" />
+                    <col style="width: 35%" />
+                    <col style="width: 35%" />
+                    <col style="width: 15%" />
+                    <col style="width: 10%" />
+                  </colgroup>
+                  <tr>
+                    <th style="text-align: center"></th>
+                    <th style="text-align: center">項目名称</th>
+                    <th style="text-align: center">ファイル名</th>
+                    <th style="text-align: center">添付資料有無</th>
+                    <th style="text-align: center"></th>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center">1</td>
+                    <td style="text-align: left">XXの活用実績</td>
+                    <td style="text-align: left">
+                      <a href="">XX証明書.pdf</a>
+                    </td>
+                    <td style="text-align: center">
+                      <input type="checkbox" checked />
+                    </td>
+                    <td style="text-align: center">
+                      <button type="button">削除</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center">2</td>
+                    <td style="text-align: left">
+                      <input type="text" style="width: 100%" />
+                    </td>
+                    <td style="text-align: left">
+                      <input type="text" style="width: 100%" />
+                    </td>
+                    <td style="text-align: center">
+                      <input type="checkbox" />
+                    </td>
+                    <td style="text-align: center">
+                      <button type="button">追加</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- user-form -->
+      </div>
+      <!-- middle-area -->
+
+      <div class="middle-area">
+        <div class="row justify-content-center information">
+          <div class="col-lg-8 align-left">
+            <hr />
+            <p class="bold">添付ファイルの設定</p>
+          </div>
+        </div>
+
+        <div>
+          <form>
+            <div class="row justify-content-sm-center">
+              <div class="col-8">
+                <table class="form-table">
+                  <colgroup>
+                    <col style="width: 5%" />
+                    <col style="width: 85%" />
+                    <col style="width: 10%" />
+                  </colgroup>
+                  <tr>
+                    <th style="text-align: center"></th>
+                    <th style="text-align: center">ファイル名</th>
+                    <th style="text-align: center"></th>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center">1</td>
+                    <td style="text-align: left">証明書.pdf</td>
+                    <td style="text-align: center">
+                      <button type="button">削除</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center">2</td>
+                    <td style="text-align: left">
+                      <input type="text" style="width: 100%" />
+                    </td>
+                    <td style="text-align: center">
+                      <button type="button">追加</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 align-center">
+                <!-- <input type="submit" class="btn" value="input" /> -->
+                <a class="btn">登録</a>
+                <a class="btn">確認印刷</a>
+                <a
+                  class="btn"
+                  onclick="
+            // if(!confirm('この内容で登録してよろしいですか？')){return false;} else { return false; }
+            document.getElementById('myDialog').showModal()
+            "
+                  >様式削除</a
+                >
+                <a class="btn">参加申請様式設定画面に戻る</a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- user-form -->
+      </div>
+      <!-- middle-area -->
+    </div>
+  </body>
+</html>
