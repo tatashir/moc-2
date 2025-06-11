@@ -74,6 +74,53 @@
       </div>
       <!-- top-area -->
 
+      <div class="align-center mb-4 justify-content-center">
+        <div class="col-md-10">
+          <dialog
+            id="myDialog"
+            style="padding: 0; min-height: 300px; min-width: 400px"
+          >
+            <div
+              style="
+                background-color: #f0f0ff;
+                border: 1px solid #fff;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 300px;
+              "
+            >
+              <p
+                style="
+                  font-size: 1.2rem;
+                  margin-bottom: 24px;
+                  margin-top: 0;
+                  text-align: center;
+                "
+              >
+                XX様式を削除してよろしいですか？
+              </p>
+              <div style="display: flex; gap: 16px">
+                <button
+                  class="btn"
+                  onclick="alert('削除しました'); document.getElementById('myDialog').close();"
+                >
+                  OK
+                  <button
+                    class="btn"
+                    onclick="document.getElementById('myDialog').close()"
+                  >
+                    戻る
+                  </button>
+                </button>
+              </div>
+            </div>
+          </dialog>
+        </div>
+      </div>
+
       <div class="middle-area">
         <div class="row justify-content-sm-center">
           <div class="col-lg-8 align-left alert-message">
@@ -304,7 +351,14 @@
                 <!-- <input type="submit" class="btn" value="input" /> -->
                 <a class="btn">登録</a>
                 <a class="btn">確認印刷</a>
-                <a class="btn">様式削除</a>
+                <a
+                  class="btn"
+                  onclick="
+            // if(!confirm('この内容で登録してよろしいですか？')){return false;} else { return false; }
+            document.getElementById('myDialog').showModal()
+            "
+                  >様式削除</a
+                >
                 <a class="btn">参加申請様式設定画面に戻る</a>
               </div>
             </div>
