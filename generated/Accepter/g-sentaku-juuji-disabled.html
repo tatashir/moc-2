@@ -1,0 +1,493 @@
+<!--/*
+ //***************************
+ //
+ // 配置予定技術者の他工事従事状況（g-sentaku-keiken-disabled.html）
+ //
+ //***************************
+*/-->
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>配置予定技術者の他工事従事状況</title>
+    <link rel="stylesheet" href="../styles/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="../styles/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="../styles/upsystem.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="logo vertical-center">
+              <h1>技術資料等アップロードシステム</h1>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="tools vertical-right">
+              <input class="btn" type="button" name="" value="閉じる" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- header -->
+
+    <div class="container">
+      <div class="breadcrumbs">
+        <div class="row">
+          <ul>
+            <li><a href="">技術資料入力選択メニューの表示</a></li>
+            <li><a href="">配置予定技術者の選択の表示</a></li>
+            <li>配置予定技術者の他工事従事状況</li>
+          </ul>
+        </div>
+      </div>
+      <!-- breadcrumbs -->
+
+      <div class="screen-title">
+        <div class="row">
+          <div class="col-12 align-center">
+            <h2>配置予定技術者の他工事従事状況</h2>
+          </div>
+        </div>
+      </div>
+      <!-- screen-title -->
+
+      <div class="middle-area">
+        <div class="row justify-content-sm-center">
+          <div class="col-lg-8 align-left alert-message">
+            <p class="indentback">＊印のある項目は必須項目です。</p>
+            <p class="indentback">
+              ・入力をキャンセルする場合は、戻るボタンを押下してください。
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- middle-area -->
+
+      <div class="middle-area">
+        <div class="row justify-content-sm-center">
+          <div class="col-8">
+            <ul
+              class="tab-list"
+              style="
+                display: flex;
+                /* border-bottom: 2px solid #ccc; */
+                padding-left: 0;
+                margin-bottom: 12px;
+              "
+            >
+              <li
+                class="tab active"
+                data-tab="user1"
+                style="
+                  list-style: none;
+                  padding: 5px 10px;
+                  border: 1px solid #ccc;
+                  background: #fff;
+                  font-weight: bold;
+                  cursor: pointer;
+                  margin-right: 2px;
+                "
+              >
+                従事状況1
+              </li>
+              <li
+                class="tab"
+                data-tab="user2"
+                style="
+                  list-style: none;
+                  padding: 5px 10px;
+                  border: 1px solid #ccc;
+                  background: #eee;
+                  cursor: pointer;
+                  margin-right: 2px;
+                "
+              >
+                従事状況2
+              </li>
+              <li
+                class="tab"
+                data-tab="user2"
+                style="
+                  list-style: none;
+                  padding: 5px 10px;
+                  border: 1px solid #ccc;
+                  background: #eee;
+                  cursor: pointer;
+                  margin-right: 2px;
+                "
+              >
+                従事状況3
+              </li>
+            </ul>
+          </div>
+          <form>
+            <div class="row justify-content-sm-center">
+              <div class="col-8">
+                <table class="form-table">
+                  <tr>
+                    <th>配置予定技術者*</th>
+                    <td>
+                      <input type="text" style="width: 100%" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>同種工事の条件*</th>
+                    <td>
+                      <input type="text" style="width: 100%" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>調達案件名称*</th>
+                    <td>
+                      <input type="text" style="width: 100%" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>受注者名*</th>
+                    <td>
+                      <input type="text" style="width: 100%" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>工期*</th>
+                    <td>
+                      <select>
+                        <option>昭和</option>
+                      </select>
+                      <input type="text" style="width: 50px" />
+                      年
+                      <input type="text" style="width: 50px" />
+                      月
+                      <input type="text" style="width: 50px" />
+                      日から<br />
+                      <div>
+                        <select>
+                          <option>昭和</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日まで
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>従事役職／従事期間*</th>
+                    <td>
+                      <input type="checkbox" />
+                      <b>監理技術者</b>
+                      <div>
+                        <select>
+                          <option>昭和</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日から<br />
+                        <select>
+                          <option>昭和</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日まで
+                      </div>
+                      <hr />
+                      <input type="checkbox" />
+                      <b>主任技術者</b>
+                      <div>
+                        <select>
+                          <option>昭和</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日から<br />
+                        <select>
+                          <option>昭和</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日まで
+                      </div>
+                      <hr />
+                      <input type="checkbox" />
+                      <b>現場代理人</b>
+                      <div>
+                        <select>
+                          <option>昭和</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日から<br />
+                        <select>
+                          <option>昭和</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日まで
+                      </div>
+                      <hr />
+                      <input type="checkbox" />
+                      <b>担当技術者</b>
+                      <div>
+                        <select>
+                          <option>昭和</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日から<br />
+                        <select>
+                          <option>昭和</option>
+                        </select>
+                        <input type="text" style="width: 50px" />
+                        年
+                        <input type="text" style="width: 50px" />
+                        月
+                        <input type="text" style="width: 50px" />
+                        日まで
+                      </div>
+                      <hr />
+                      <input type="checkbox" />
+                      <b>他（入力記入可）</b><input type="text" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>CORINS登録番号*</th>
+                    <td>
+                      <div>
+                        <input type="checkbox" />
+                        <b>有</b>
+                        <input type="checkbox" />
+                        <b>無</b>
+                      </div>
+                      <div>
+                        <input type="text" />
+                      </div>
+                      <table class="file-upload" style="width: 100%">
+                        <tr>
+                          <th
+                            style="
+                              width: 30%;
+                              border: 1px solid #000;
+                              text-align: center;
+                            "
+                          >
+                            <span>添付資料</span>
+                          </th>
+                          <th
+                            style="
+                              width: 40%;
+                              border: 1px solid #000;
+                              text-align: center;
+                            "
+                          >
+                            <span>ファイル名</span>
+                          </th>
+                          <th
+                            style="
+                              width: 15%;
+                              border: 1px solid #000;
+                              text-align: center;
+                            "
+                          >
+                            <span>サイズ</span>
+                          </th>
+                          <th style="width: 15%; border: 1px solid #000"></th>
+                        </tr>
+                        <tr>
+                          <td style="border: 1px solid #000">ファイル名1</td>
+                          <td style="border: 1px solid #000">
+                            <a href="">ファイル名1.pdf</a>
+                          </td>
+                          <td
+                            style="border: 1px solid #000; text-align: center"
+                          >
+                            100KB
+                          </td>
+                          <td
+                            style="border: 1px solid #000; text-align: center"
+                          >
+                            <button type="button">削除</button>
+                          </td>
+                        </tr>
+                        <!-- <tr>
+                          <td style="border: 1px solid #000">ファイル名2</td>
+                          <td style="border: 1px solid #000">
+                            <input type="file" />
+                          </td>
+                          <td style="border: 1px solid #000"></td>
+                          <td style="border: 1px solid #000">
+                            <button type="button" disabled>削除</button>
+                          </td>
+                        </tr> -->
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>施工場所*</th>
+                    <td>
+                      <input type="text" style="width: 100%" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>本工事を落札した場合の対応処置等*</th>
+                    <td>
+                      <input type="checkbox" />
+                      <b>有</b>
+                      <input type="checkbox" />
+                      <b>無</b><input type="text" style="width: 100%" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>本工事と重複する場合の対応処置</th>
+                    <td><input type="text" style="width: 100%" /></td>
+                  </tr>
+                  <tr>
+                    <th>営業所における専任の技術者として従事*</th>
+                    <td>
+                      <input type="checkbox" disabled />
+                      <b>有</b>
+                      <input type="checkbox" disabled />
+                      <b>無</b
+                      ><input type="text" style="width: 100%" disabled />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      営業所における専任の技術者として従事（駐在）する期間*
+                    </th>
+                    <td>
+                      <select disabled>
+                        <option>昭和</option>
+                      </select>
+                      <input type="text" style="width: 50px" disabled />
+                      年
+                      <input type="text" style="width: 50px" disabled />
+                      月
+                      <input type="text" style="width: 50px" disabled />
+                      日から<br />
+                      <div>
+                        <select disabled>
+                          <option>昭和</option>
+                        </select>
+                        <input type="text" style="width: 50px" disabled />
+                        年
+                        <input type="text" style="width: 50px" disabled />
+                        月
+                        <input type="text" style="width: 50px" disabled />
+                        日まで
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>特例管理技術者配置の有無*</th>
+                    <td>
+                      <div>
+                        <input type="checkbox" disabled />
+                        <b>有</b>
+                        <input type="checkbox" disabled />
+                        <b>無</b>
+                      </div>
+                      <div>
+                        <input type="checkbox" disabled />
+                        <b>専任（管理技術者として従事予定）</b><br />
+                        <input type="checkbox" disabled />
+                        <b>兼任（特例管理技術者として兼任予定）</b>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- middle-area -->
+
+      <div class="bottom-area">
+        <div class="row justify-content-center information">
+          <div class="col-lg-8 align-left">
+            <hr />
+            <p class="bold">添付ファイル</p>
+          </div>
+        </div>
+
+        <div>
+          <form>
+            <div class="row justify-content-sm-center">
+              <div class="col-8 result-list">
+                <table>
+                  <tr class="align-center">
+                    <th width="5%">No.</th>
+                    <th width="25%">添付資料</th>
+                    <th width="50%">ファイル名</th>
+                    <th width="10%">サイズ</th>
+                    <th width="10%"></th>
+                  </tr>
+                  <tr>
+                    <td class="align-center">1</td>
+                    <td class="align-left">添付資料1</td>
+                    <td class="align-left">
+                      <a href="#">添付資料1.pdf</a>
+                    </td>
+                    <td class="align-right">1.2MB</td>
+                    <td class="align-center">
+                      <button>削除</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="align-center">2</td>
+                    <td class="align-left">添付資料2</td>
+                    <td class="align-left">
+                      <input type="file" />
+                    </td>
+                    <td></td>
+                    <td class="align-center">
+                      <button disabled>削除</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 align-center">
+                <!-- <input type="submit" class="btn" value="input" /> -->
+                <a class="btn">確認印刷</a>
+                <a class="btn">既存技術者情報の呼出</a>
+                <a class="btn">入力画面の初期化</a>
+                <a class="btn">登録</a>
+                <a class="btn">戻る</a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- user-form -->
+      </div>
+      <!-- bottom-area -->
+    </div>
+  </body>
+</html>
