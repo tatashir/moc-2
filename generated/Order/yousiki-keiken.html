@@ -186,14 +186,105 @@
                     <td style="text-align: center">
                       <input type="checkbox" />
                     </td>
-                    <td>工事成績表定点</td>
+                    <td>工事成績評定点</td>
                   </tr>
                   <tr>
                     <td style="text-align: center">
                       <input type="checkbox" />
                     </td>
-                    <td>同種性</td>
+                    <td style="padding-top: 4px">
+                      <div style="display: flex; align-items: center">
+                        <label
+                          for="parent-doushusei"
+                          style="margin-right: 4px; width: 25%"
+                        >
+                          同種性
+                        </label>
+                        <div
+                          id="doushusei-children"
+                          style="
+                            margin-left: 0;
+                            margin-top: 0;
+                            border-left: 2px solid #ccc;
+                            padding-left: 1em;
+                          "
+                        >
+                          <div
+                            style="
+                              margin-bottom: 4px;
+                              display: flex;
+                              align-items: center;
+                            "
+                          >
+                            <input type="checkbox" id="doushusei-tohoku" />
+                            <label for="doushusei-tohoku" style="margin: 0"
+                              >東北</label
+                            >
+                          </div>
+                          <div style="margin-bottom: 4px">
+                            <input type="checkbox" id="doushusei-kanto" />
+                            <label for="doushusei-kanto">関東</label>
+                          </div>
+                          <div>
+                            <input type="checkbox" id="doushusei-kyushu" />
+                            <label for="doushusei-kyushu">九州</label>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
+                  <!-- <tr>
+                    <td style="text-align: center">
+                      <input type="checkbox" />
+                    </td>
+                    <td style="padding-top: 4px">
+                      <div style="display: flex">
+                        <div
+                          style="
+                            margin-left: 0;
+                            margin-top: 0;
+                            padding-left: 1em;
+                            margin-right: 4px;
+                            width: 25%;
+                          "
+                        >
+                          <div style="margin-bottom: 4px">
+                            <input type="checkbox" id="doushusei-tohoku" />
+                            <label for="doushusei-tohoku">東北</label>
+                          </div>
+                        </div>
+                        <div
+                          id="doushusei-children"
+                          style="
+                            margin-left: 0;
+                            margin-top: 0;
+                            border-left: 2px solid #ccc;
+                            padding-left: 1em;
+                          "
+                        >
+                          <div style="margin-bottom: 4px">
+                            <input type="checkbox" id="doushusei-tohoku" />
+                            <label for="doushusei-tohoku">東北</label>
+                          </div>
+                          <div style="margin-bottom: 4px">
+                            <input type="checkbox" id="doushusei-kanto" />
+                            <label for="doushusei-kanto">関東</label>
+                          </div>
+                          <div>
+                            <input type="checkbox" id="doushusei-kyushu" />
+                            <label for="doushusei-kyushu">九州</label>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr> -->
+                  <script>
+                    function toggleChildren(parent) {
+                      document.getElementById(
+                        "doushusei-children"
+                      ).style.display = parent.checked ? "block" : "none";
+                    }
+                  </script>
                   <tr>
                     <td style="text-align: center">
                       <input type="checkbox" />
